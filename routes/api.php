@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->group(
-    [], 
+$router->prefix('v1')->group(
     function () use ($router) {
 		$router->get('/pessoa_fisica', '\App\Http\Controllers\PessoaFisicaController@index');
 		$router->get('/pessoa_fisica/{id}', '\App\Http\Controllers\PessoaFisicaController@show');
