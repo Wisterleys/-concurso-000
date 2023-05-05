@@ -25,6 +25,10 @@ class PessoaFisicaController extends Controller
 			    'estado_id' => 'required',
             ]
         );
+        $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
+        if($pessoa){
+            return $this->sendResponse($pessoa,"Registro já existe!",409);
+        }
         
 	    $pessoa = new PessoaFisica();
 	    $pessoa->nome = $request->nome;
@@ -32,8 +36,13 @@ class PessoaFisicaController extends Controller
 	    $pessoa->endereco = $request->endereco;
 	    $pessoa->cidade_id = $request->cidade_id;
 	    $pessoa->estado_id = $request->estado_id;
-	    
-        return json_encode(PessoaFisica::createPessoaFisica($pessoa));
+	    try {
+            $re = PessoaFisica::createPessoaFisica($pessoa);
+            return $this->sendResponse($re,"Registro criado com sucesso!");
+        } catch (\Throwable $th) {
+            return $this->sendResponse($th,"Erro ao tentar gravar registro",500);
+        }
+       
     }
     
     public function update(Request $request)
@@ -51,13 +60,22 @@ class PessoaFisicaController extends Controller
         );
         
 	    $pessoa = PessoaFisica::find($request->id);
-	    $pessoa->nome = $request->nome;
-	    $pessoa->cpf = $request->cpf;
-	    $pessoa->endereco = $request->endereco;
-	    $pessoa->cidade_id = $request->cidade_id;
-	    $pessoa->estado_id = $request->estado_id;
+	    if($pessoa!=null){
+            $pessoa->nome = $request->nome;
+            $pessoa->cpf = $request->cpf;
+            $pessoa->endereco = $request->endereco;
+            $pessoa->cidade_id = $request->cidade_id;
+            $pessoa->estado_id = $request->estado_id;
 	    
-        return json_encode(PessoaFisica::updatePessoaFisica($pessoa));
+            try {
+                $resul = PessoaFisica::updatePessoaFisica($pessoa);
+                return $this->sendResponse($resul,"Registro atualizado com sucesso!");
+            } catch (\Throwable $th) {
+                return $this->sendResponse($th,"Erro ao tentar atualizar registro",500);
+            }
+        }else{
+            return $this->sendResponse([],"Nenhum registro encontrado!",404);
+        }
     }
 
     public function index(Request $request)
@@ -71,15 +89,21 @@ class PessoaFisicaController extends Controller
         
         if(null != $request->nome){
         	$result = PessoaFisica::where('nome', $request->nome)->orderBy('nome')->get();
-        	return json_encode($result);
+        	return  $this->sendResponse($result);
         }
         
-        return json_encode(PessoaFisica::orderBy('nome')->get());
+        return  $this->sendResponse(PessoaFisica::orderBy('nome')->get());
     }
 
     public function show(Request $request, $id)
     {
-        return json_encode(PessoaFisica::loadPessoaFisicaById($id));
+        try {
+            $result = PessoaFisica::loadPessoaFisicaById($id);
+            if($result==null)return $this->sendResponse([],"Nenhum registro encontrado!",404);
+            return  $this->sendResponse($result);
+        } catch (\Throwable $th) {
+            $this->sendResponse($th,"Erro ao tentar pesquisar registro!",500);
+        }
     }
 
 
@@ -87,7 +111,7 @@ class PessoaFisicaController extends Controller
     {
         $pessoa = PessoaFisica::find($id);
 	    
-        return json_encode(PessoaFisica::deletePessoaFisica($pessoa));
+        return $this->sendResponse(PessoaFisica::deletePessoaFisica($pessoa));
     }
 
 }
