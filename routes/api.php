@@ -27,5 +27,7 @@ $router->prefix('v1')->group(
 		$router->post('/inscricao', '\App\Http\Controllers\InscricaoController@store');
 		$router->patch('/inscricao', '\App\Http\Controllers\InscricaoController@update');
 		$router->patch('/inscricao/{id}', '\App\Http\Controllers\InscricaoController@destroy');
+		
+		$router->get('/cidadeuf', '\App\Http\Controllers\CidadeUfController@index');
     }
 );
