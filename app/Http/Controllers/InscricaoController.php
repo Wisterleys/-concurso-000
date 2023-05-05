@@ -14,25 +14,37 @@ class InscricaoController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate(
-            $request,
-            [
-			    'pessoa_fisica_id' => 'required',
-			    'cargo' => 'required',
-			    'situacao' => 'required'
-            ]
-        );
-        
-	    $inscricao = new Inscricao();
-	    $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
-	    $inscricao->cargo = $request->cargo;
-	    $inscricao->situacao = $request->situacao;
-	    
-        return json_encode(Inscricao::createInscricao($inscricao));
+        try {
+            $this->validate(
+                $request,
+                [
+                    'pessoa_fisica_id' => 'required',
+                    'cargo' => 'required',
+                    'situacao' => 'required'
+                ]
+            );
+            
+            $inscricao = new Inscricao();
+            $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
+            $inscricao->cargo = $request->cargo;
+            $inscricao->situacao = $request->situacao;
+            
+            return $this->sendResponse(
+                Inscricao::createInscricao($inscricao),
+                "Inscrição criada com sucesso!"
+            );
+        } catch (\Throwable $th) {
+            return $this->sendResponse(
+                $th,
+                "Erro ao criar inscrição!",
+                $th->status
+            );
+        }
     }
     
     public function update(Request $request)
     {
+        try {
         $this->validate(
             $request,
             [
@@ -44,11 +56,31 @@ class InscricaoController extends Controller
         );
         
 	    $inscricao = Inscricao::find($request->id);
-	    $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
-	    $inscricao->cargo = $request->cargo;
-	    $inscricao->situacao = $request->situacao;
-	    
-	    return json_encode(Inscricao::updateInscricao($inscricao));
+	    if($inscricao!=null){
+            $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
+            $inscricao->cargo = $request->cargo;
+            $inscricao->situacao = $request->situacao;
+            
+            
+                return $this->sendResponse(
+                    Inscricao::updateInscricao($inscricao),
+                    "Inscrição atualizada com sucesso!"
+                );
+            }else{
+                return $this->sendResponse(
+                    $inscricao,
+                    "Nenhum registro encontrado!",
+                    404
+                );
+            } 
+        }
+        catch (\Throwable $th) {
+            return $this->sendResponse(
+                $th,
+                "Erro ao atualizar inscrição!",
+                $th->status
+            );
+        }
     }
 
     public function index(Request $request)
@@ -62,22 +94,22 @@ class InscricaoController extends Controller
         
         if(null != $request->cargo){
         	$result = Inscricao::where('cargo', $request->cargo)->orderBy('cargo')->get();
-        	return json_encode($result);
+        	return $this->sendResponse($result);
         }
         
-        return json_encode(Inscricao::orderBy('cargo')->get());
+        return $this->sendResponse(Inscricao::orderBy('cargo')->get());
     }
 
     public function show(Request $request, $id)
     {
-        return json_encode(Inscricao::loadInscricaoById($id));
+        return $this->sendResponse(Inscricao::loadInscricaoById($id));
     }
 
     public function destroy(Request $request, $id)
     {
         $inscricao = Inscricao::find($id);
 	    
-        return json_encode(Inscricao::deleteInscricao($inscricao));
+        return $this->sendResponse(Inscricao::deleteInscricao($inscricao));
     }
 
 }

@@ -93,7 +93,13 @@ class PessoaFisicaController extends Controller
 
     public function show(Request $request, $id)
     {
-        return  $this->sendResponse(PessoaFisica::loadPessoaFisicaById($id));
+        try {
+            $result = PessoaFisica::loadPessoaFisicaById($id);
+            if($result==null)return $this->sendResponse([],"Nenhum registro encontrado!",404);
+            return  $this->sendResponse($result);
+        } catch (\Throwable $th) {
+            $this->sendResponse($th,"Erro ao tentar pesquisar registro!",500);
+        }
     }
 
 
