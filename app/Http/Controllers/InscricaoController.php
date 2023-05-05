@@ -23,7 +23,10 @@ class InscricaoController extends Controller
                     'situacao' => 'required'
                 ]
             );
-            
+            $inscricao= Inscricao::where('pessoa_fisica_id', $request->pessoa_fisica_id)->first();
+            if($inscricao){
+                return $this->sendResponse($inscricao,"Registro já existe!",409);
+            }
             $inscricao = new Inscricao();
             $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
             $inscricao->cargo = $request->cargo;

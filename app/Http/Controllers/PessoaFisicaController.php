@@ -25,6 +25,10 @@ class PessoaFisicaController extends Controller
 			    'estado_id' => 'required',
             ]
         );
+        $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
+        if($pessoa){
+            return $this->sendResponse($pessoa,"Registro já existe!",409);
+        }
         
 	    $pessoa = new PessoaFisica();
 	    $pessoa->nome = $request->nome;
