@@ -105,14 +105,23 @@ class InscricaoController extends Controller
 
     public function show(Request $request, $id)
     {
-        return $this->sendResponse(Inscricao::loadInscricaoById($id));
+        try {
+            $inscricao = Inscricao::showById($id);
+            return $inscricao?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
+        } catch (\Throwable $th) {
+           return $this->sendResponse($th,"Erro ao tentar encontrar registro!",$th->status);
+        }
     }
 
     public function destroy(Request $request, $id)
     {
         $inscricao = Inscricao::find($id);
 	    
-        return $this->sendResponse(Inscricao::deleteInscricao($inscricao));
+        if($inscricao){
+            return $this->sendResponse(Inscricao::deleteInscricao($inscricao),'Registro removido com sucesso!');
+        }else{
+            return $this->sendResponse([],'Nenhum registro encontrado!',404);
+        }
     }
 
 }
