@@ -22,6 +22,9 @@ class Inscricao extends Model
     	return $inscricao->update();
     }
     
+    public static function showById($id){
+        return Inscricao::find($id);
+    }
     public static function loadInscricaoById($id){
         return Inscricao::find($id)->first();
     }
