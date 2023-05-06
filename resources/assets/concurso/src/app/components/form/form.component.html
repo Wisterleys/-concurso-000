@@ -1,4 +1,4 @@
-<form class="col-12">
+<div class="col-12">
     <div class="row">
         <h2 class="mb-5 mt-5 text-center">
             {{title}}
@@ -6,39 +6,42 @@
         <div class="col-md-6 col-sm-12 row">
             <div class="form-group required mb-3 col-12">
                 <label for="exampleInputEmail1">Nome completo</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome...">
-                <small id="emailHelp" class="text-danger">We'll never share your email with anyone else.</small>
+                <input (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome...">
+                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o nome!</small>
             </div>
-            <div class="form-group required mb-3 col-12">
+            <div class="form-group required mb-3 col-12 ">
                 <label for="exampleInputEmail1">Endereço</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
-                <small id="emailHelp" class="text-danger">We'll never share your email with anyone else.</small>
+                <input [disabled]="isBtnLoading" type="email" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
+                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o endereço!.</small>
             </div>
             <div class="form-group required mb-3 col-12">
                 <label for="exampleInputEmail1">Cargo</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu cardo...">
-                <small id="emailHelp" class="text-danger">We'll never share your email with anyone else.</small>
+                <input [disabled]="isBtnLoading" type="email" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu cardo...">
+                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group required mb-3 col-12">
                 <label for="exampleInputEmail1">CPF</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu CPF...">
-                <small id="emailHelp" class="text-danger">We'll never share your email with anyone else.</small>
+                <input [disabled]="isBtnLoading" type="email" class="form-control validate-cpf" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu CPF...">
+                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o CPF!</small>
             </div>
             <div class="row">
                 <div class="form-group required mb-3 col-6">
                     <label for="exampleInputEmail1">Estado</label>
-                    <select class="form-select" id="">
+                    <select [disabled]="isBtnLoading" class="form-select validate" id="" (change)="onSelectedState($event)">
+                        <option value=""></option>
                         <option *ngFor="let s of states" [value]="s.estado_id">{{s.nome}}</option>
                     </select>
-                    
+                    <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar um estado!</small>
                 </div>
                 <div class="form-group required mb-3 col-6">
                     <label for="exampleInputEmail1">Cidade</label>
-                    <select class="form-select" id="">
-                        <option *ngFor="let c of cities" [value]="c.cidade_id">{{c.nome}}</option>
+                    <select [disabled]="isBtnLoading" class="form-select validate" id="">
+                        <option value=""></option>
+                        <option *ngFor="let c of selectedCities" [value]="c.cidade_id">{{c.nome}}</option>
                     </select>
+                    <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar uma cidade!</small>
                     
                 </div>
             </div>
@@ -49,11 +52,11 @@
         <div class="row">
             <div class="col-8"></div>
             <div class="col-4">
-                <button *ngIf="!isBtnLoading" type="submit" class="btn btn-success w-100 p-2" (click)="submit()">{{submitTile}}</button>
+                <button *ngIf="!isBtnLoading" type="submit" class="btn btn-success w-100 p-2" (click)="submit($event)">{{submitTile}}</button>
                 <button *ngIf="isBtnLoading" type="submit" class="btn btn-success w-100 p-1">
                     <div class="spinner-border text-warning" role="status">
                   </div></button>
             </div>
         </div>
     </div>
-</form>
+</div>
