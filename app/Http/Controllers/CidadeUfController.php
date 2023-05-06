@@ -18,8 +18,8 @@ class CidadeUfController extends Controller
     	$cidades = Cidade::all();
     	$estados = Estado::all();
         return $this->sendResponse([
-            "cidades"=>$cidades,
-            "estados"=>$estados,
+            "cities"=>$cidades,
+            "states"=>$estados,
         ]);
     }
 }
