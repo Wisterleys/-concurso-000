@@ -1,1 +1,21 @@
-<p class="btn btn-danger">registration works!</p>
+
+    <section class="container">
+        <header class="mb-5 mt-5 row col-12 text-center">
+            <h1 class="col-12">Concurso público para desenvolvedor de Software</h1> 
+        </header>
+        <main class="m-3" *ngIf="states.length">
+            <app-form 
+            [title]="formTile" 
+            [submitTile]="submitTile" 
+            (dataForm)="onSubmit($event)" 
+            (isLoading)="onIsFormLoading($event)"
+            [cities]="cities"
+            [states]="states"
+            ></app-form>
+        </main>
+        <footer>
+    
+        </footer>
+    </section>
+
+

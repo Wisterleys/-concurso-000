@@ -8,22 +8,5 @@ import { RegistrationService } from './services/registration.service';
 })
 export class AppComponent {
   title = 'concurso';
-
-  constructor(
-    public service: RegistrationService
-  ){
-    this.service.getRegistration().subscribe(
-      (value:any)=>{
-        console.log(value);
-
-      }
-    );
-    this.service.getCities().subscribe(
-      (value:any)=>{
-        console.log(value);
-
-      }
-    );
-  }
   
 }
