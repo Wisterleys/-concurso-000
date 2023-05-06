@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegistrationService } from './services/registration.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'concurso';
+
+  constructor(
+    public service: RegistrationService
+  ){
+    this.service.getRegistration().subscribe(
+      (value:any)=>{
+        console.log(value);
+
+      }
+    );
+    this.service.getCities().subscribe(
+      (value:any)=>{
+        console.log(value);
+
+      }
+    );
+  }
+  
 }
