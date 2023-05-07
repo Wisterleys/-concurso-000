@@ -37,19 +37,18 @@ export class RegistrationComponent implements OnInit {
     );
   }
   onSubmit(value:FormContractModel){
-    let data={
-      "nome" : value.name,
-      "cpf" : value.CPF,
-      "endereco" : value.address,
-      "cidade_id" : value.cityId,
-      "estado_id" : value.stateId,
-      "cargo" : value.job,
-      "situacao" : "cadastrando"
-  };
-    console.log(value)
-    setTimeout(() => {
-      this.isBtnLoading.emit(false);
-    }, 2000);
+    
+    this.service.postRegistration(value).subscribe(
+      (value:any)=>{
+        console.log(value);
+        this.isBtnLoading.emit(false);
+      },
+      (error:any)=>{
+        console.log(error.error.message);
+        this.isBtnLoading.emit(false);
+      }
+    )
+    
   }
   onIsFormLoading(value:boolean){
     this.isLoading=value;

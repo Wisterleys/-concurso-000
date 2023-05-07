@@ -215,19 +215,13 @@ class RegistrationComponent {
         });
     }
     onSubmit(value) {
-        let data = {
-            "nome": value.name,
-            "cpf": value.CPF,
-            "endereco": value.address,
-            "cidade_id": value.cityId,
-            "estado_id": value.stateId,
-            "cargo": value.job,
-            "situacao": "cadastrando"
-        };
-        console.log(value);
-        setTimeout(() => {
+        this.service.postRegistration(value).subscribe((value) => {
+            console.log(value);
             this.isBtnLoading.emit(false);
-        }, 2000);
+        }, (error) => {
+            console.log(error.error.message);
+            this.isBtnLoading.emit(false);
+        });
     }
     onIsFormLoading(value) {
         this.isLoading = value;
@@ -276,6 +270,17 @@ class RegistrationService extends _core_base_service__WEBPACK_IMPORTED_MODULE_0_
     }
     getRegistration() {
         return this.get('/inscricao');
+    }
+    postRegistration(value) {
+        return this.post('/inscricao', {
+            "nome": value.name,
+            "cpf": value.CPF,
+            "endereco": value.address,
+            "cidade_id": value.cityId,
+            "estado_id": value.stateId,
+            "cargo": value.job,
+            "situacao": "enviado"
+        });
     }
     getCities() {
         return this.get('/cidadeuf');
