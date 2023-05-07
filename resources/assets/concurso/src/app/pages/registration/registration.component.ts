@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CityContractModel } from 'src/app/models/city-contract.model';
 import { StateContractModel } from 'src/app/models/state-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   public formTile:string="Inscrição do canditado";
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
-  public isBtnLoading:boolean=false;
+  @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
   public cities:Array<CityContractModel>=[];
   public states:Array<StateContractModel>=[];
   constructor(
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
   onSubmit(value:FormContractModel){
     console.log(value)
     setTimeout(() => {
-      this.isBtnLoading=false;
+      this.isBtnLoading.emit(false);
     }, 2000);
   }
   onIsFormLoading(value:boolean){

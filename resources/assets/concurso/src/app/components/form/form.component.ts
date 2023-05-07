@@ -14,7 +14,8 @@ export class FormComponent implements OnInit,OnChanges {
   @Input() submitTile:string='';
   @Input() cities:Array<CityContractModel>=[];
   @Input() states:Array<StateContractModel>=[];
-  @Input() isBtnLoading:boolean=false;
+  @Input() btnLoading?:EventEmitter<boolean>;
+  public isBtnLoading:boolean=false;
   @Output() dataForm: EventEmitter<FormContractModel> = new EventEmitter();
   public selectedState?:number;
   public selectedCities:Array<CityContractModel>=[];
@@ -24,14 +25,16 @@ export class FormComponent implements OnInit,OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.btnLoading?.subscribe(
+      (value:boolean)=>{
+        this.isBtnLoading=value;
+      }
+    )
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log('Propriedade "dados" foi atualizada:', this.isBtnLoading);
   }
-  changeIsLoading(value:boolean){
-    this.isBtnLoading=value;
-  }
+  
   formDataAssignValues(key:string,value:any){
     switch (key) {
       case 'CPF':
@@ -46,10 +49,10 @@ export class FormComponent implements OnInit,OnChanges {
         this.formData.job = value;
         break;
       case 'Estado':
-        this.formData.stateId = value;
+        this.formData.stateId = parseInt(value);
         break;
       case 'Cidade':
-        this.formData.cityId = value;
+        this.formData.cityId = parseInt(value);
         break;
     }
   }
@@ -122,13 +125,11 @@ export class FormComponent implements OnInit,OnChanges {
   }
   submit(){
     if(this.validateForm()&&this.validateCpf()){
-      this.emit(true);
+      this.isBtnLoading=true;
       this.dataForm.emit(this.formData)
     }
     
   }
-  emit(value:boolean){
-    this.isBtnLoading=value;
-  }
+  
 
 }
