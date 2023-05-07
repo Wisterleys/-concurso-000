@@ -7,6 +7,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inscricao;
+use App\Models\PessoaFisica;
+use Illuminate\Support\Facades\DB;
+
 
 class InscricaoController extends Controller
 {
@@ -18,17 +21,31 @@ class InscricaoController extends Controller
             $this->validate(
                 $request,
                 [
-                    'pessoa_fisica_id' => 'required',
-                    'cargo' => 'required',
-                    'situacao' => 'required'
+                    "nome" => "required",
+                    "cpf" => "required",
+                    "endereco" => "required",
+                    "cidade_id" => "required",
+                    "estado_id" => "required",
+                    "cargo" => "required",
+                    "situacao" => "required",
+                                    
                 ]
             );
-            $inscricao= Inscricao::where('pessoa_fisica_id', $request->pessoa_fisica_id)->first();
-            if($inscricao){
-                return $this->sendResponse($inscricao,"Registro já existe!",409);
+            $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
+            if($pessoa){
+                return $this->sendResponse($pessoa,"Registro já existe!",409);
             }
+            $pessoa = new PessoaFisica();
+            $pessoa->nome = $request->nome;
+            $pessoa->cpf = $request->cpf;
+            $pessoa->endereco = $request->endereco;
+            $pessoa->cidade_id = $request->cidade_id;
+            $pessoa->estado_id = $request->estado_id;    
+            PessoaFisica::createPessoaFisica($pessoa);
+            $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
+            
             $inscricao = new Inscricao();
-            $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
+            $inscricao->pessoa_fisica_id = $pessoa->id;
             $inscricao->cargo = $request->cargo;
             $inscricao->situacao = $request->situacao;
             
@@ -95,6 +112,7 @@ class InscricaoController extends Controller
             ]
         );
         
+        
         if(null != $request->cargo){
         	$result = Inscricao::where('cargo', $request->cargo)->orderBy('cargo')->get();
         	return $this->sendResponse($result);
@@ -103,10 +121,15 @@ class InscricaoController extends Controller
         return $this->sendResponse(Inscricao::orderBy('cargo')->get());
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $cpf)
     {
         try {
-            $inscricao = Inscricao::showById($id);
+            //$inscricao = Inscricao::showById($id);
+            $inscricao = DB::table('pessoa_fisica')
+            ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
+            ->select('pessoa_fisica.*', 'inscricao.*')
+            ->where('pessoa_fisica.cpf','=',$cpf)
+            ->get();
             return $inscricao?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
         } catch (\Throwable $th) {
            return $this->sendResponse($th,"Erro ao tentar encontrar registro!",$th->status);

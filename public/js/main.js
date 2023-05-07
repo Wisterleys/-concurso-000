@@ -215,6 +215,15 @@ class RegistrationComponent {
         });
     }
     onSubmit(value) {
+        let data = {
+            "nome": value.name,
+            "cpf": value.CPF,
+            "endereco": value.address,
+            "cidade_id": value.cityId,
+            "estado_id": value.stateId,
+            "cargo": value.job,
+            "situacao": "cadastrando"
+        };
         console.log(value);
         setTimeout(() => {
             this.isBtnLoading.emit(false);
@@ -397,6 +406,9 @@ class FormComponent {
                 break;
             case 'Cidade':
                 this.formData.cityId = parseInt(value);
+                break;
+            case 'Endereço':
+                this.formData.address = value;
                 break;
         }
     }

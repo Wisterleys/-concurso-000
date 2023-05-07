@@ -50,6 +50,9 @@ export class FormComponent implements OnInit {
       case 'Cidade':
         this.formData.cityId = parseInt(value);
         break;
+      case 'Endereço':
+        this.formData.address = value;
+        break;
     }
   }
   realTimeValidateNameInput(event: Event) {
