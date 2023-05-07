@@ -1,8 +1,9 @@
 <div class="col-12">
     <div class="row">
-        <h2 class="mb-5 mt-5 text-center">
+        <h2 class="mb-5 mt-5 text-center setTitle">
             {{title}}
         </h2>
+        <hr>
         <div class="col-md-6 col-sm-12 row">
             <div class="form-group required mb-3 col-12">
                 <label for="exampleInputEmail1">Nome completo</label>
@@ -23,7 +24,12 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group required mb-3 col-12">
                 <label for="exampleInputEmail1">CPF</label>
-                <input [disabled]="isBtnLoading" type="email" class="form-control validate-cpf" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu CPF...">
+                <input 
+                [disabled]="isBtnLoading"
+                 type="text" 
+                 class="form-control validate-cpf"
+                  (input)="maskCpf($event)"
+                  placeholder="Informe seu CPF...">
                 <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o CPF!</small>
             </div>
             <div class="row">
@@ -48,11 +54,11 @@
     
         </div>
       
-        
+        <hr>
         <div class="row">
             <div class="col-8"></div>
             <div class="col-4">
-                <button *ngIf="!isBtnLoading" type="submit" class="btn btn-success w-100 p-2" (click)="submit($event)">{{submitTile}}</button>
+                <button *ngIf="!isBtnLoading" type="submit" class="btn btn-success w-100 p-2" (click)="submit()">{{submitTile}}</button>
                 <button *ngIf="isBtnLoading" type="submit" class="btn btn-success w-100 p-1">
                     <div class="spinner-border text-warning" role="status">
                   </div></button>
