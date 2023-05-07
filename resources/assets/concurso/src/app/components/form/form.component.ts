@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CityContractModel } from 'src/app/models/city-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { StateContractModel } from 'src/app/models/state-contract.model';
@@ -9,7 +9,7 @@ import { cpf } from 'cpf-cnpj-validator';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit,OnChanges {
+export class FormComponent implements OnInit {
   @Input() title:string='';
   @Input() submitTile:string='';
   @Input() cities:Array<CityContractModel>=[];
@@ -31,10 +31,6 @@ export class FormComponent implements OnInit,OnChanges {
       }
     )
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('Propriedade "dados" foi atualizada:', this.isBtnLoading);
-  }
-  
   formDataAssignValues(key:string,value:any){
     switch (key) {
       case 'CPF':
@@ -124,7 +120,8 @@ export class FormComponent implements OnInit,OnChanges {
 
   }
   submit(){
-    if(this.validateForm()&&this.validateCpf()){
+    let isCPF:boolean = this.validateCpf();
+    if(this.validateForm()&&isCPF){
       this.isBtnLoading=true;
       this.dataForm.emit(this.formData)
     }
