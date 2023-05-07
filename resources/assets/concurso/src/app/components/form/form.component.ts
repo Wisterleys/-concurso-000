@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CityContractModel } from 'src/app/models/city-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { StateContractModel } from 'src/app/models/state-contract.model';
@@ -14,9 +14,8 @@ export class FormComponent implements OnInit,OnChanges {
   @Input() submitTile:string='';
   @Input() cities:Array<CityContractModel>=[];
   @Input() states:Array<StateContractModel>=[];
+  @Input() isBtnLoading:boolean=false;
   @Output() dataForm: EventEmitter<FormContractModel> = new EventEmitter();
-  @Output() isLoading: EventEmitter<boolean> = new EventEmitter();
-  public isBtnLoading:boolean=false;
   public selectedState?:number;
   public selectedCities:Array<CityContractModel>=[];
   public formData:FormContractModel={};
@@ -27,9 +26,32 @@ export class FormComponent implements OnInit,OnChanges {
   ngOnInit(): void {
     
   }
-  ngOnChanges(): void {
-    this.cities;
-    this.states;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Propriedade "dados" foi atualizada:', this.isBtnLoading);
+  }
+  changeIsLoading(value:boolean){
+    this.isBtnLoading=value;
+  }
+  formDataAssignValues(key:string,value:any){
+    switch (key) {
+      case 'CPF':
+        this.formData.CPF= value.replace(/[\ \/\.\-\\]/g,"").trimStart().trimEnd();
+        break;
+      case 'Nome completo':
+      case 'Nome':
+      case 'Name':
+        this.formData.name = value;
+        break;
+      case 'Cargo':
+        this.formData.job = value;
+        break;
+      case 'Estado':
+        this.formData.stateId = value;
+        break;
+      case 'Cidade':
+        this.formData.cityId = value;
+        break;
+    }
   }
   realTimeValidateNameInput(event: Event) {
     let value = (<HTMLSelectElement>event.target).value;
@@ -42,24 +64,32 @@ export class FormComponent implements OnInit,OnChanges {
     (<HTMLSelectElement>event.target).value = value;
   }
   
-  
+  maskCpf(value:Event){
+    let str = (<HTMLInputElement>value.target).value;
+    (<HTMLInputElement>value.target).value = str.replace(/\D/g,'')
+    .replace(/([\d]{3})(\d)/,'$1.$2')
+    .replace(/([\d]{3})(\d)/,'$1.$2')
+    .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
+    .replace(/(-[\d]{2})\d+?$/,'$1');
+  }
   validateCpf():boolean{
-    console.log("caiu no chamou")
+    
     let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
     let label = elCpf.parentNode!.querySelector('label')!.innerHTML;
     let isCpf:boolean=cpf.isValid(elCpf.value);
     if(elCpf.value==null||elCpf.value==''){
       elCpf.parentNode!.querySelector('small')!.innerHTML=`${this.validadeDefaultMessage} ${label}!`;
       elCpf.parentNode!.querySelector('small')!.hidden=false;
-      console.log("caiu no válido")
+      
     }else if(!isCpf){
       elCpf.parentNode!.querySelector('small')!.innerHTML=`CPF inválido!`;
       elCpf.parentNode!.querySelector('small')!.hidden=false;
-      console.log("caiu no invalido")
+      
       
     }else{
       isCpf=true;
       elCpf.parentNode!.querySelector('small')!.hidden=true;
+      this.formDataAssignValues(label,elCpf.value);
     }
     return isCpf;
   }
@@ -75,6 +105,7 @@ export class FormComponent implements OnInit,OnChanges {
         e.parentNode!.querySelector('small')!.hidden=false;
       }else{
         e.parentNode!.querySelector('small')!.hidden=true;
+        this.formDataAssignValues(label,el);
       }
     });
 
@@ -89,20 +120,15 @@ export class FormComponent implements OnInit,OnChanges {
     }
 
   }
-  submit(event:Event){
-    let v = this.validateCpf();
-    if(this.validateForm()&&v){
+  submit(){
+    if(this.validateForm()&&this.validateCpf()){
       this.emit(true);
       this.dataForm.emit(this.formData)
-      setTimeout(() => {
-        this.emit(false);
-      }, 2000);
     }
     
   }
   emit(value:boolean){
     this.isBtnLoading=value;
-    this.isLoading.emit(value);
   }
 
 }

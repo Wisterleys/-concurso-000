@@ -182,13 +182,13 @@ function RegistrationComponent_main_4_Template(rf, ctx) { if (rf & 1) {
     const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "app-form", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dataForm", function RegistrationComponent_main_4_Template_app_form_dataForm_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r1.onSubmit($event); })("isLoading", function RegistrationComponent_main_4_Template_app_form_isLoading_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.onIsFormLoading($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dataForm", function RegistrationComponent_main_4_Template_app_form_dataForm_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r1.onSubmit($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", ctx_r0.formTile)("submitTile", ctx_r0.submitTile)("cities", ctx_r0.cities)("states", ctx_r0.states);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", ctx_r0.formTile)("submitTile", ctx_r0.submitTile)("isBtnLoading", ctx_r0.isBtnLoading)("cities", ctx_r0.cities)("states", ctx_r0.states);
 } }
 class RegistrationComponent {
     constructor(service) {
@@ -196,6 +196,7 @@ class RegistrationComponent {
         this.formTile = "Inscrição do canditado";
         this.submitTile = "Salvar inscrição";
         this.isLoading = false;
+        this.isBtnLoading = false;
         this.cities = [];
         this.states = [];
     }
@@ -214,6 +215,9 @@ class RegistrationComponent {
     }
     onSubmit(value) {
         console.log(value);
+        setTimeout(() => {
+            this.isBtnLoading = false;
+        }, 2000);
     }
     onIsFormLoading(value) {
         this.isLoading = value;
@@ -221,14 +225,14 @@ class RegistrationComponent {
     }
 }
 RegistrationComponent.ɵfac = function RegistrationComponent_Factory(t) { return new (t || RegistrationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_registration_service__WEBPACK_IMPORTED_MODULE_1__["RegistrationService"])); };
-RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegistrationComponent, selectors: [["app-registration"]], decls: 6, vars: 1, consts: [[1, "container"], [1, "mb-5", "mt-5", "row", "col-12", "text-center"], [1, "col-12"], ["class", "m-3", 4, "ngIf"], [1, "m-3"], [3, "title", "submitTile", "cities", "states", "dataForm", "isLoading"]], template: function RegistrationComponent_Template(rf, ctx) { if (rf & 1) {
+RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegistrationComponent, selectors: [["app-registration"]], decls: 6, vars: 1, consts: [[1, "container"], [1, "mb-5", "mt-5", "row", "col-12", "text-center"], [1, "col-12"], ["class", "m-3", 4, "ngIf"], [1, "m-3"], [3, "title", "submitTile", "isBtnLoading", "cities", "states", "dataForm"]], template: function RegistrationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "header", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h1", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Concurso p\u00FAblico para desenvolvedor de Software");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, RegistrationComponent_main_4_Template, 2, 4, "main", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, RegistrationComponent_main_4_Template, 2, 5, "main", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "footer");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -341,7 +345,7 @@ function FormComponent_option_44_Template(rf, ctx) { if (rf & 1) {
 function FormComponent_button_50_Template(rf, ctx) { if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FormComponent_button_50_Template_button_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.submit($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FormComponent_button_50_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.submit(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -360,18 +364,40 @@ class FormComponent {
         this.submitTile = '';
         this.cities = [];
         this.states = [];
-        this.dataForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.isLoading = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.isBtnLoading = false;
+        this.dataForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.selectedCities = [];
         this.formData = {};
         this.validadeDefaultMessage = "Ops! Precisa informar";
     }
     ngOnInit() {
     }
-    ngOnChanges() {
-        this.cities;
-        this.states;
+    ngOnChanges(changes) {
+        console.log('Propriedade "dados" foi atualizada:', this.isBtnLoading);
+    }
+    changeIsLoading(value) {
+        this.isBtnLoading = value;
+    }
+    formDataAssignValues(key, value) {
+        switch (key) {
+            case 'CPF':
+                this.formData.CPF = value.replace(/[\ \/\.\-\\]/g, "").trimStart().trimEnd();
+                break;
+            case 'Nome completo':
+            case 'Nome':
+            case 'Name':
+                this.formData.name = value;
+                break;
+            case 'Cargo':
+                this.formData.job = value;
+                break;
+            case 'Estado':
+                this.formData.stateId = value;
+                break;
+            case 'Cidade':
+                this.formData.cityId = value;
+                break;
+        }
     }
     realTimeValidateNameInput(event) {
         let value = event.target.value;
@@ -383,24 +409,30 @@ class FormComponent {
         });
         event.target.value = value;
     }
+    maskCpf(value) {
+        let str = value.target.value;
+        value.target.value = str.replace(/\D/g, '')
+            .replace(/([\d]{3})(\d)/, '$1.$2')
+            .replace(/([\d]{3})(\d)/, '$1.$2')
+            .replace(/([\d]{3})(\d{1,2})/, '$1-$2')
+            .replace(/(-[\d]{2})\d+?$/, '$1');
+    }
     validateCpf() {
-        console.log("caiu no chamou");
         let elCpf = document.querySelector(".validate-cpf");
         let label = elCpf.parentNode.querySelector('label').innerHTML;
         let isCpf = cpf_cnpj_validator__WEBPACK_IMPORTED_MODULE_1__["cpf"].isValid(elCpf.value);
         if (elCpf.value == null || elCpf.value == '') {
             elCpf.parentNode.querySelector('small').innerHTML = `${this.validadeDefaultMessage} ${label}!`;
             elCpf.parentNode.querySelector('small').hidden = false;
-            console.log("caiu no válido");
         }
         else if (!isCpf) {
             elCpf.parentNode.querySelector('small').innerHTML = `CPF inválido!`;
             elCpf.parentNode.querySelector('small').hidden = false;
-            console.log("caiu no invalido");
         }
         else {
             isCpf = true;
             elCpf.parentNode.querySelector('small').hidden = true;
+            this.formDataAssignValues(label, elCpf.value);
         }
         return isCpf;
     }
@@ -416,6 +448,7 @@ class FormComponent {
             }
             else {
                 e.parentNode.querySelector('small').hidden = true;
+                this.formDataAssignValues(label, el);
             }
         });
         return isOk;
@@ -427,23 +460,18 @@ class FormComponent {
             this.selectedCities = this.cities.filter(c => c.estado_id == this.selectedState);
         }
     }
-    submit(event) {
-        let v = this.validateCpf();
-        if (this.validateForm() && v) {
+    submit() {
+        if (this.validateForm() && this.validateCpf()) {
             this.emit(true);
             this.dataForm.emit(this.formData);
-            setTimeout(() => {
-                this.emit(false);
-            }, 2000);
         }
     }
     emit(value) {
         this.isBtnLoading = value;
-        this.isLoading.emit(value);
     }
 }
 FormComponent.ɵfac = function FormComponent_Factory(t) { return new (t || FormComponent)(); };
-FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FormComponent, selectors: [["app-form"]], inputs: { title: "title", submitTile: "submitTile", cities: "cities", states: "states" }, outputs: { dataForm: "dataForm", isLoading: "isLoading" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]], decls: 52, vars: 11, consts: [[1, "col-12"], [1, "row"], [1, "mb-5", "mt-5", "text-center"], [1, "col-md-6", "col-sm-12", "row"], [1, "form-group", "required", "mb-3", "col-12"], ["for", "exampleInputEmail1"], ["type", "text", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Digite seu nome...", 1, "form-control", "validate", 3, "disabled", "input"], ["hidden", "", "id", "emailHelp", 1, "text-danger"], ["type", "email", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Digite seu e-mail...", 1, "form-control", "validate", 3, "disabled"], ["type", "email", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Informe seu cardo...", 1, "form-control", "validate", 3, "disabled"], [1, "col-md-6", "col-sm-12"], ["type", "email", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Informe seu CPF...", 1, "form-control", "validate-cpf", 3, "disabled"], [1, "form-group", "required", "mb-3", "col-6"], ["id", "", 1, "form-select", "validate", 3, "disabled", "change"], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "", 1, "form-select", "validate", 3, "disabled"], [1, "col-8"], [1, "col-4"], ["type", "submit", "class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-success w-100 p-1", 4, "ngIf"], [3, "value"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning"]], template: function FormComponent_Template(rf, ctx) { if (rf & 1) {
+FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FormComponent, selectors: [["app-form"]], inputs: { title: "title", submitTile: "submitTile", cities: "cities", states: "states", isBtnLoading: "isBtnLoading" }, outputs: { dataForm: "dataForm" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]], decls: 52, vars: 11, consts: [[1, "col-12"], [1, "row"], [1, "mb-5", "mt-5", "text-center"], [1, "col-md-6", "col-sm-12", "row"], [1, "form-group", "required", "mb-3", "col-12"], ["for", "exampleInputEmail1"], ["type", "text", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Digite seu nome...", 1, "form-control", "validate", 3, "disabled", "input"], ["hidden", "", "id", "emailHelp", 1, "text-danger"], ["type", "email", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Digite seu e-mail...", 1, "form-control", "validate", 3, "disabled"], ["type", "email", "id", "exampleInputEmail1", "aria-describedby", "emailHelp", "placeholder", "Informe seu cardo...", 1, "form-control", "validate", 3, "disabled"], [1, "col-md-6", "col-sm-12"], ["type", "text", "placeholder", "Informe seu CPF...", 1, "form-control", "validate-cpf", 3, "disabled", "input"], [1, "form-group", "required", "mb-3", "col-6"], ["id", "", 1, "form-select", "validate", 3, "disabled", "change"], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "", 1, "form-select", "validate", 3, "disabled"], [1, "col-8"], [1, "col-4"], ["type", "submit", "class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-success w-100 p-1", 4, "ngIf"], [3, "value"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning"]], template: function FormComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h2", 2);
@@ -485,7 +513,9 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "label", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "CPF");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "input", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "input", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("input", function FormComponent_Template_input_input_27_listener($event) { return ctx.maskCpf($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "small", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "Ops! Precisa informar o CPF!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();

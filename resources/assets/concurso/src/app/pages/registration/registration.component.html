@@ -7,8 +7,8 @@
             <app-form 
             [title]="formTile" 
             [submitTile]="submitTile" 
-            (dataForm)="onSubmit($event)" 
-            (isLoading)="onIsFormLoading($event)"
+            (dataForm)="onSubmit($event)"
+            [isBtnLoading]="isBtnLoading"
             [cities]="cities"
             [states]="states"
             ></app-form>

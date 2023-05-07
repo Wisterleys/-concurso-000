@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit {
   public formTile:string="Inscrição do canditado";
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
+  public isBtnLoading:boolean=false;
   public cities:Array<CityContractModel>=[];
   public states:Array<StateContractModel>=[];
   constructor(
@@ -37,6 +38,9 @@ export class RegistrationComponent implements OnInit {
   }
   onSubmit(value:FormContractModel){
     console.log(value)
+    setTimeout(() => {
+      this.isBtnLoading=false;
+    }, 2000);
   }
   onIsFormLoading(value:boolean){
     this.isLoading=value;
