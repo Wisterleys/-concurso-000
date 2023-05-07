@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
+  @Output() showSnacbar:EventEmitter<string> = new EventEmitter();
   public cities:Array<CityContractModel>=[];
   public states:Array<StateContractModel>=[];
   constructor(
@@ -40,11 +41,11 @@ export class RegistrationComponent implements OnInit {
     
     this.service.postRegistration(value).subscribe(
       (value:any)=>{
-        console.log(value);
+        this.showSnacbar.emit(value.message);
         this.isBtnLoading.emit(false);
       },
       (error:any)=>{
-        console.log(error.error.message);
+        this.showSnacbar.emit(error.error.message);
         this.isBtnLoading.emit(false);
       }
     )

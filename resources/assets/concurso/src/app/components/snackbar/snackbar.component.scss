@@ -1,0 +1,22 @@
+.snackbar{
+    position: absolute;
+    border-radius: 10px;
+    display: none;
+    left: 200%;
+    bottom: 5;
+    width: 30%;
+    height: auto;
+    background-color: green;
+    color: white;
+    padding: 30px;
+    transform: translateX(-50%);
+    transition: left 5s;
+
+}
+.snackbar p{
+    background-color: none;
+}
+.snackbar.show{
+    display: block;
+    left: 50%;
+}
