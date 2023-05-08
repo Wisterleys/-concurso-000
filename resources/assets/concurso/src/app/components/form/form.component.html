@@ -1,0 +1,105 @@
+<div class="col-12">
+    <div class="row">
+        <h2 class="mb-5 mt-5 text-center setTitle">
+            {{title}}
+        </h2>
+        <hr>
+        <ng-content></ng-content>
+        <div class="col-md-6 col-sm-12 row">
+            <div class="form-group mb-3 col-12">
+                <div class="row">
+                    <div class="col-8 required">
+                        <label >CPF</label>
+                        <input 
+                        [disabled]="isBtnLoading||isFielddisabled"
+                        type="text" 
+                        class="form-control validate-cpf"
+                        [value]="formData.CPF?maskCpf(formData.CPF):''"
+                        (input)="formatCpf($event)"
+                        placeholder="Informe seu CPF...">
+                        <small hidden  class="text-danger">Ops! Precisa informar o CPF!</small>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                        
+                        <button *ngIf="!isBtnLoadingData&&!isPrint" class="btn btn-success w-100 p-2" (click)="loadData()">Carregar</button>
+                        <button *ngIf="isBtnLoadingData&&!isPrint" type="submit" class="btn btn-primary w-100 p-1">
+                            <div class="spinner-border text-warning m-0" role="status">
+                          </div></button>
+                          <small style="visibility: hidden;" class="text-danger">Ops! Precisa informar o CPF!</small>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-group required mb-3 col-12">
+                <label >Nome completo</label>
+                <input [value]="formData.name?formData.name:''" (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu nome...">
+                <small hidden  class="text-danger">Ops! Precisa informar o nome!</small>
+            </div>
+            <div class="form-group required mb-3 col-12 ">
+                <label >Endereço</label>
+                <input [value]="formData.address?formData.address:''" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu e-mail...">
+                <small hidden  class="text-danger">Ops! Precisa informar o endereço!.</small>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div *ngIf="formData.date" class="row">
+                <div class="form-group required mb-3 col-6">
+                    <label >Situação</label>
+                <input [value]="formData.status" [disabled]="isBtnLoading||isFielddisabled" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
+                    
+                </div>
+                <div class="form-group required mb-3 col-6">
+                    <label >Data</label>
+                    <input [value]="formatDate(formData.date)" [disabled]="isBtnLoading||isFielddisabled" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                    <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
+                    
+                </div>
+            </div>
+            <div class="form-group required mb-3 col-12">
+                <label >Cargo</label>
+                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
+            </div>
+            
+            <div class="row">
+                <div class="form-group required mb-3 col-6">
+                    <label >Estado</label>
+                    <select [disabled]="isBtnLoading" 
+                    class="form-select validate" (change)="onSelectedState($event)"
+                   id="state"
+                    >
+                        <option value=""></option>
+                        <option *ngFor="let s of states" [value]="s.estado_id">{{s.nome}}</option>
+                    </select>
+                    <small hidden  class="text-danger">Ops! Precisa informar um estado!</small>
+                </div>
+                <div class="form-group required mb-3 col-6">
+                    <label >Cidade</label>
+                    <select [disabled]="isBtnLoading" class="form-select validate" id="city">
+                        <option value=""></option>
+                        <option *ngFor="let c of selectedCities" [value]="c.cidade_id">{{c.nome}}</option>
+                    </select>
+                    <small hidden  class="text-danger">Ops! Precisa informar uma cidade!</small>
+                    
+                </div>
+            </div>
+    
+        </div>
+      
+        <hr>
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                
+
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <button *ngIf="!isBtnLoading&&!isPrint" type="submit" class="btn btn-success w-100 p-2" (click)="submit()">{{submitTile}}</button>
+                <button *ngIf="isBtnLoading&&!isPrint" type="submit" class="btn btn-success w-100 p-1">
+                    <div class="spinner-border text-warning" role="status">
+                  </div></button>
+            </div>
+        </div>
+        
+    </div>
+</div>

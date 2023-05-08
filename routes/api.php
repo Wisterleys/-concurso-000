@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->group(
-    [], 
+$router->prefix('v1')->group(
     function () use ($router) {
 		$router->get('/pessoa_fisica', '\App\Http\Controllers\PessoaFisicaController@index');
 		$router->get('/pessoa_fisica/{id}', '\App\Http\Controllers\PessoaFisicaController@show');
@@ -28,5 +27,7 @@ $router->group(
 		$router->post('/inscricao', '\App\Http\Controllers\InscricaoController@store');
 		$router->patch('/inscricao', '\App\Http\Controllers\InscricaoController@update');
 		$router->patch('/inscricao/{id}', '\App\Http\Controllers\InscricaoController@destroy');
+		
+		$router->get('/cidadeuf', '\App\Http\Controllers\CidadeUfController@index');
     }
 );

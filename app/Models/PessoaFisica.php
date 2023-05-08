@@ -24,6 +24,9 @@ class PessoaFisica extends Model
     	return $pessoa->save();
     }
     
+    public static function showById($id){
+        return PessoaFisica::find($id);
+    }
     public static function loadPessoaFisicaById($id){
         return PessoaFisica::find($id)->first();
     }
