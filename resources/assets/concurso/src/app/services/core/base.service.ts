@@ -29,8 +29,8 @@ export class BaseService<T> {
   delete(endpoint:string):Observable<GenericResult>{
     return this.http.delete<GenericResult>(this.apiUrl+endpoint,{headers:this.getHeaders()})
   }
-  patch(endpoint:string):Observable<GenericResult>{
-    return this.http.patch<GenericResult>(this.apiUrl+endpoint,{headers:this.getHeaders()})
+  patch(endpoint:string,body: T):Observable<GenericResult>{
+    return this.http.patch<GenericResult>(this.apiUrl+endpoint,body,{headers:this.getHeaders()})
   }
 
 

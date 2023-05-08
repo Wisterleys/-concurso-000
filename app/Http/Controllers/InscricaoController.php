@@ -72,23 +72,34 @@ class InscricaoController extends Controller
 			    'pessoa_fisica_id' => 'required',
 			    'cargo' => 'required',
 			    'situacao' => 'required',
+                'nome' => 'required',
+			    'cpf' => 'required',
+			    'endereco' => 'required',
+			    'cidade_id' => 'required',
+			    'estado_id' => 'required',
             ]
         );
         
 	    $inscricao = Inscricao::find($request->id);
-	    if($inscricao!=null){
+        $pessoa = PessoaFisica::where('cpf',$request->cpf)->first();
+	    if($inscricao&&$pessoa){
+            $pessoa->nome = $request->nome;
+            $pessoa->endereco = $request->endereco;
+            $pessoa->cidade_id = $request->cidade_id;
+            $pessoa->estado_id = $request->estado_id;
             $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
             $inscricao->cargo = $request->cargo;
             $inscricao->situacao = $request->situacao;
             
-            
+                $resulPes = PessoaFisica::updatePessoaFisica($pessoa);
+                $resulInsc = Inscricao::updateInscricao($inscricao);
                 return $this->sendResponse(
-                    Inscricao::updateInscricao($inscricao),
+                    [$resulPes,$resulInsc],
                     "Inscrição atualizada com sucesso!"
                 );
             }else{
                 return $this->sendResponse(
-                    $inscricao,
+                    [],
                     "Nenhum registro encontrado!",
                     404
                 );
@@ -124,7 +135,7 @@ class InscricaoController extends Controller
     public function show(Request $request, $cpf)
     {
         try {
-            //$inscricao = Inscricao::showById($id);
+            
             $inscricao = DB::table('pessoa_fisica')
             ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
             ->select('pessoa_fisica.*', 'inscricao.*')

@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   public formTile:string="Inscrição do canditado";
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
+  public isCreate:boolean=true;
   @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
   @Output() showDataForm:EventEmitter<FormContractModel> = new EventEmitter();
   @Output() showSnacbar:EventEmitter<SnackBarDataModel> = new EventEmitter();
@@ -26,24 +27,49 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   /*  this.service.getRegistration().subscribe(
-      (value:any)=>{
-        console.log(value);
-
-      }
-    ); */
+   
     this.service.getCities().subscribe(
       (value:any)=>{
         this.cities = value.data.cities;
         this.states = value.data.states;
-        console.log("kd os dados?",this.states);
 
       }
     );
   }
+
   onSubmit(value:FormContractModel){
+    if(this.isCreate){
+      this.onSubmitCreate(value);
+    }else{
+      this.onSubmitUpdate(value);
+    }
+  }
+
+  onSubmitCreate(value:FormContractModel){
     
     this.service.postRegistration(value).subscribe(
+      (value:any)=>{
+        let data:SnackBarDataModel = {
+          message:value.message,
+          color:'bg-success'
+        };
+        this.showSnacbar.emit(data);
+        this.isBtnLoading.emit(false);
+      },
+      (error:any)=>{
+        let data:SnackBarDataModel = {
+          message:error.error.message,
+          color:'bg-danger'
+        };
+        this.showSnacbar.emit(data);
+        this.isBtnLoading.emit(false);
+      }
+    )
+    
+  }
+  onSubmitUpdate(value:FormContractModel){
+    
+    this.service.putRegistration(value).subscribe(
       (value:any)=>{
         let data:SnackBarDataModel = {
           message:value.message,
@@ -69,6 +95,8 @@ export class RegistrationComponent implements OnInit {
        let value = data.data[0];
         console.log(value)
         this.showDataForm.emit({
+          id:value.id,
+          personId:value.pessoa_fisica_id,
           name:value.nome,
           job:value.cargo,
           address:value.endereco,
@@ -76,6 +104,7 @@ export class RegistrationComponent implements OnInit {
           stateId:value.estado_id,
           CPF:value.cpf
         })
+        this.isCreate=false;
       },
       (error:any)=>{
         let data:SnackBarDataModel = {
@@ -90,7 +119,6 @@ export class RegistrationComponent implements OnInit {
   
   onIsFormLoading(value:boolean){
     this.isLoading=value;
-    console.log(value)
   }
 
 }

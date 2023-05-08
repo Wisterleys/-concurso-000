@@ -1,5 +1,7 @@
 
 export interface  FormContractModel{
+    id?:number;
+    personId?:number;
     name?:string;
      address?:string;
      job?:string;

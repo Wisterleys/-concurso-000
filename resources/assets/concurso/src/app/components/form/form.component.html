@@ -10,11 +10,11 @@
                     <div class="col-8 required">
                         <label >CPF</label>
                         <input 
-                        [disabled]="isBtnLoading"
+                        [disabled]="isBtnLoading||isFielddisabled"
                         type="text" 
                         class="form-control validate-cpf"
-                        [value]="formData.CPF?formatCpf(formData.CPF):''"
-                        (input)="maskCpf($event)"
+                        [value]="formData.CPF?maskCpf(formData.CPF):''"
+                        (input)="formatCpf($event)"
                         placeholder="Informe seu CPF...">
                         <small hidden  class="text-danger">Ops! Precisa informar o CPF!</small>
                     </div>
@@ -43,7 +43,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group required mb-3 col-12">
                 <label >Cargo</label>
-                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" type="text" class="form-control validate" placeholder="Informe seu cargo...">
                 <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
             

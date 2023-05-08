@@ -147,8 +147,8 @@ class BaseService {
     delete(endpoint) {
         return this.http.delete(this.apiUrl + endpoint, { headers: this.getHeaders() });
     }
-    patch(endpoint) {
-        return this.http.patch(this.apiUrl + endpoint, { headers: this.getHeaders() });
+    patch(endpoint, body) {
+        return this.http.patch(this.apiUrl + endpoint, body, { headers: this.getHeaders() });
     }
     getHeaders() {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
@@ -202,6 +202,7 @@ class RegistrationComponent {
         this.formTile = "Inscrição do canditado";
         this.submitTile = "Salvar inscrição";
         this.isLoading = false;
+        this.isCreate = true;
         this.isBtnLoading = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.showDataForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.showSnacbar = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
@@ -209,20 +210,38 @@ class RegistrationComponent {
         this.states = [];
     }
     ngOnInit() {
-        /*  this.service.getRegistration().subscribe(
-           (value:any)=>{
-             console.log(value);
-     
-           }
-         ); */
         this.service.getCities().subscribe((value) => {
             this.cities = value.data.cities;
             this.states = value.data.states;
-            console.log("kd os dados?", this.states);
         });
     }
     onSubmit(value) {
+        if (this.isCreate) {
+            this.onSubmitCreate(value);
+        }
+        else {
+            this.onSubmitUpdate(value);
+        }
+    }
+    onSubmitCreate(value) {
         this.service.postRegistration(value).subscribe((value) => {
+            let data = {
+                message: value.message,
+                color: 'bg-success'
+            };
+            this.showSnacbar.emit(data);
+            this.isBtnLoading.emit(false);
+        }, (error) => {
+            let data = {
+                message: error.error.message,
+                color: 'bg-danger'
+            };
+            this.showSnacbar.emit(data);
+            this.isBtnLoading.emit(false);
+        });
+    }
+    onSubmitUpdate(value) {
+        this.service.putRegistration(value).subscribe((value) => {
             let data = {
                 message: value.message,
                 color: 'bg-success'
@@ -243,6 +262,8 @@ class RegistrationComponent {
             let value = data.data[0];
             console.log(value);
             this.showDataForm.emit({
+                id: value.id,
+                personId: value.pessoa_fisica_id,
                 name: value.nome,
                 job: value.cargo,
                 address: value.endereco,
@@ -250,6 +271,7 @@ class RegistrationComponent {
                 stateId: value.estado_id,
                 CPF: value.cpf
             });
+            this.isCreate = false;
         }, (error) => {
             let data = {
                 message: error.error.message,
@@ -261,7 +283,6 @@ class RegistrationComponent {
     }
     onIsFormLoading(value) {
         this.isLoading = value;
-        console.log(value);
     }
 }
 RegistrationComponent.ɵfac = function RegistrationComponent_Factory(t) { return new (t || RegistrationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_registration_service__WEBPACK_IMPORTED_MODULE_1__["RegistrationService"])); };
@@ -314,6 +335,19 @@ class RegistrationService extends _core_base_service__WEBPACK_IMPORTED_MODULE_0_
     postRegistration(value) {
         return this.post('/inscricao', {
             "nome": value.name,
+            "cpf": value.CPF,
+            "endereco": value.address,
+            "cidade_id": value.cityId,
+            "estado_id": value.stateId,
+            "cargo": value.job,
+            "situacao": "enviado"
+        });
+    }
+    putRegistration(value) {
+        return this.patch('/inscricao', {
+            "nome": value.name,
+            "id": value.id,
+            "pessoa_fisica_id": value.personId,
             "cpf": value.CPF,
             "endereco": value.address,
             "cidade_id": value.cityId,
@@ -435,6 +469,7 @@ class FormComponent {
         this.states = [];
         this.isBtnLoading = false;
         this.isBtnLoadingData = false;
+        this.isFielddisabled = false;
         this.dataForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.showData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.selectedCities = [];
@@ -445,11 +480,14 @@ class FormComponent {
         var _a, _b;
         (_a = this.btnLoading) === null || _a === void 0 ? void 0 : _a.subscribe((value) => {
             this.isBtnLoading = value;
+            //this.isFielddisabled=value;
         });
         (_b = this.showDataForm) === null || _b === void 0 ? void 0 : _b.subscribe((value) => {
             let s = document.querySelector("#state");
             this.formData = value;
             if (value.stateId && value.cityId) {
+                this.submitTile = "Atualizar dados";
+                this.isFielddisabled = true;
                 s.value = value.stateId.toString();
                 let ciity = value.cityId.toString();
                 this.selectedState = value.stateId;
@@ -499,15 +537,11 @@ class FormComponent {
         });
         event.target.value = value;
     }
-    maskCpf(value) {
-        let str = value.target.value;
-        value.target.value = str.replace(/\D/g, '')
-            .replace(/([\d]{3})(\d)/, '$1.$2')
-            .replace(/([\d]{3})(\d)/, '$1.$2')
-            .replace(/([\d]{3})(\d{1,2})/, '$1-$2')
-            .replace(/(-[\d]{2})\d+?$/, '$1');
-    }
     formatCpf(value) {
+        let str = value.target.value;
+        value.target.value = this.maskCpf(str);
+    }
+    maskCpf(value) {
         return value.replace(/\D/g, '')
             .replace(/([\d]{3})(\d)/, '$1.$2')
             .replace(/([\d]{3})(\d)/, '$1.$2')
@@ -561,6 +595,7 @@ class FormComponent {
         let isCPF = this.validateCpf();
         if (this.validateForm() && isCPF) {
             this.isBtnLoading = true;
+            this.isFielddisabled = true;
             this.dataForm.emit(this.formData);
         }
     }
@@ -590,7 +625,7 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "CPF");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("input", function FormComponent_Template_input_input_11_listener($event) { return ctx.maskCpf($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("input", function FormComponent_Template_input_input_11_listener($event) { return ctx.formatCpf($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "small", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Ops! Precisa informar o CPF!");
@@ -678,7 +713,7 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.title, " ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.isBtnLoading)("value", ctx.formData.CPF ? ctx.formatCpf(ctx.formData.CPF) : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.isBtnLoading || ctx.isFielddisabled)("value", ctx.formData.CPF ? ctx.maskCpf(ctx.formData.CPF) : "");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isBtnLoadingData);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -688,7 +723,7 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.address ? ctx.formData.address : "")("disabled", ctx.isBtnLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.job ? ctx.formData.job : "")("disabled", ctx.isBtnLoading);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.job ? ctx.formData.job : "")("disabled", ctx.isBtnLoading || ctx.isFielddisabled);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.isBtnLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);

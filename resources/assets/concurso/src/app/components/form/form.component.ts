@@ -11,6 +11,7 @@ import { cpf } from 'cpf-cnpj-validator';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  
   @Input() title:string='';
   @Input() submitTile:string='';
   @Input() cities:Array<CityContractModel>=[];
@@ -18,6 +19,7 @@ export class FormComponent implements OnInit {
   @Input() btnLoading?:EventEmitter<boolean>;
   public isBtnLoading:boolean=false;
   public isBtnLoadingData:boolean=false;
+  public isFielddisabled=false;
   @Output() dataForm: EventEmitter<FormContractModel> = new EventEmitter();
   @Input() showDataForm?: EventEmitter<FormContractModel>;
   @Output() showData: EventEmitter<string> = new EventEmitter();
@@ -33,6 +35,7 @@ export class FormComponent implements OnInit {
     this.btnLoading?.subscribe(
       (value:boolean)=>{
         this.isBtnLoading=value;
+        //this.isFielddisabled=value;
       }
     )
     this.showDataForm?.subscribe(
@@ -40,8 +43,8 @@ export class FormComponent implements OnInit {
         let s = <HTMLInputElement>document.querySelector("#state");
         this.formData=value;
         if(value.stateId&&value.cityId){
-          
-
+          this.submitTile = "Atualizar dados"
+          this.isFielddisabled=true;
           s.value = value.stateId.toString();
           let ciity=value.cityId.toString();
           this.selectedState = value.stateId;
@@ -55,9 +58,11 @@ export class FormComponent implements OnInit {
       }
     )
   }
+
   cpfFormatClean(cpf:string):string{
     return cpf.replace(/^[\s\uFEFF\xA0]+/g, '').replace(/[\ \/\.\-\\]/g,"").trim();
   }
+
   formDataAssignValues(key:string,value:any){
     switch (key) {
       case 'CPF':
@@ -82,6 +87,7 @@ export class FormComponent implements OnInit {
         break;
     }
   }
+
   realTimeValidateNameInput(event: Event) {
     let value = (<HTMLSelectElement>event.target).value;
     value = value.replace(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+([ '-][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/, function (match) {
@@ -93,15 +99,12 @@ export class FormComponent implements OnInit {
     (<HTMLSelectElement>event.target).value = value;
   }
   
-  maskCpf(value:Event){
+  formatCpf(value:Event){
     let str = (<HTMLInputElement>value.target).value;
-    (<HTMLInputElement>value.target).value = str.replace(/\D/g,'')
-    .replace(/([\d]{3})(\d)/,'$1.$2')
-    .replace(/([\d]{3})(\d)/,'$1.$2')
-    .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
-    .replace(/(-[\d]{2})\d+?$/,'$1');
+    (<HTMLInputElement>value.target).value = this.maskCpf(str)
   }
-  formatCpf(value:string):string{
+
+  maskCpf(value:string):string{
    
     return value.replace(/\D/g,'')
     .replace(/([\d]{3})(\d)/,'$1.$2')
@@ -109,6 +112,7 @@ export class FormComponent implements OnInit {
     .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
     .replace(/(-[\d]{2})\d+?$/,'$1');
   }
+
   validateCpf():boolean{
     
     let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
@@ -130,6 +134,7 @@ export class FormComponent implements OnInit {
     }
     return isCpf;
   }
+
   validateForm():boolean{
     let isOk=true;
     
@@ -149,6 +154,7 @@ export class FormComponent implements OnInit {
     
     return isOk;
   }
+
   onSelectedState(event:Event){
     let value =(<HTMLSelectElement>event.target).value;
     if(value!=null){
@@ -157,14 +163,17 @@ export class FormComponent implements OnInit {
     }
 
   }
+
   submit(){
     let isCPF:boolean = this.validateCpf();
     if(this.validateForm()&&isCPF){
       this.isBtnLoading=true;
+      this.isFielddisabled=true;
       this.dataForm.emit(this.formData)
     }
     
   }
+
   loadData(){
     let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
     let isCPF:boolean = this.validateCpf();
