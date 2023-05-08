@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { SnackBarDataModel } from 'src/app/models/snackbar-data.model';
 
 @Component({
   selector: 'app-snackbar',
@@ -7,9 +8,11 @@ import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 })
 export class SnackbarComponent implements OnInit {
 
-  @Input() showSnacbar?:EventEmitter<string>;
-  public seconds:number=5;
+  @Input() showSnacbar?:EventEmitter<SnackBarDataModel>;
+  public selectionColor:string='bg-success';
+  public seconds:number=3;
   public isShow:boolean=false;
+  public isFade:boolean=false;
   public message:string=''
 
   constructor() { }
@@ -17,10 +20,11 @@ export class SnackbarComponent implements OnInit {
   ngOnInit(): void {
    
     this.showSnacbar?.subscribe(
-      (value:string)=>{
-        this.message=value;
+      (value:SnackBarDataModel)=>{
+        this.message=value.message;
+        this.selectionColor = value.color;
         this.show();
-        console.log(this.message,this.isShow)
+        
       }
     );
   }
@@ -28,7 +32,14 @@ export class SnackbarComponent implements OnInit {
     this.isShow=true;
     setTimeout(()=>{
       this.isShow=false;
+      this.isFade=true;
+      setTimeout(() => {
+        this.isFade=false;
+      }, 2000);
     },this.seconds*1000);
+  }
+  getColor(){
+   
   }
 
 }

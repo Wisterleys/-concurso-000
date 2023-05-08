@@ -1,3 +1,4 @@
+
 .snackbar{
     position: absolute;
     border-radius: 10px;
@@ -6,17 +7,44 @@
     bottom: 5;
     width: 30%;
     height: auto;
-    background-color: green;
     color: white;
-    padding: 30px;
+    padding: 20px;
     transform: translateX(-50%);
-    transition: left 5s;
+    justify-content: center;
+    align-items: center;
+
 
 }
 .snackbar p{
-    background-color: none;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .snackbar.show{
-    display: block;
+    display: flex;
     left: 50%;
+    animation: show 1s;
+}
+.snackbar.fade{
+    display: flex;
+    left: -50%;
+    animation: fade 1s;
+}
+
+@keyframes show {
+    0%{
+        left: -50%;
+    }
+    100%{
+        left: 50%;
+    }
+    
+}
+@keyframes fade {
+    0%{
+        left: 50%;
+    }
+    100%{
+        left: 70%;
+    }
+    
 }

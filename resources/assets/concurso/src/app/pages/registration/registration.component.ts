@@ -3,6 +3,7 @@ import { CityContractModel } from 'src/app/models/city-contract.model';
 import { StateContractModel } from 'src/app/models/state-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { SnackBarDataModel } from 'src/app/models/snackbar-data.model';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
-  @Output() showSnacbar:EventEmitter<string> = new EventEmitter();
+  @Output() showSnacbar:EventEmitter<SnackBarDataModel> = new EventEmitter();
   public cities:Array<CityContractModel>=[];
   public states:Array<StateContractModel>=[];
   constructor(
@@ -41,11 +42,19 @@ export class RegistrationComponent implements OnInit {
     
     this.service.postRegistration(value).subscribe(
       (value:any)=>{
-        this.showSnacbar.emit(value.message);
+        let data:SnackBarDataModel = {
+          message:value.message,
+          color:'bg-success'
+        };
+        this.showSnacbar.emit(data);
         this.isBtnLoading.emit(false);
       },
       (error:any)=>{
-        this.showSnacbar.emit(error.error.message);
+        let data:SnackBarDataModel = {
+          message:error.error.message,
+          color:'bg-danger'
+        };
+        this.showSnacbar.emit(data);
         this.isBtnLoading.emit(false);
       }
     )

@@ -1200,9 +1200,12 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + 2px)}
   ---color-hr: gray;
 }
 
+body {
+  background-color: var(---color-primary);
+}
+
 * {
   font-family: sans-serif;
-  background-color: var(---color-primary);
 }
 
 .required::before {

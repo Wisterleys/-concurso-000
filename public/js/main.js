@@ -222,10 +222,18 @@ class RegistrationComponent {
     }
     onSubmit(value) {
         this.service.postRegistration(value).subscribe((value) => {
-            this.showSnacbar.emit(value.message);
+            let data = {
+                message: value.message,
+                color: 'bg-success'
+            };
+            this.showSnacbar.emit(data);
             this.isBtnLoading.emit(false);
         }, (error) => {
-            this.showSnacbar.emit(error.error.message);
+            let data = {
+                message: error.error.message,
+                color: 'bg-danger'
+            };
+            this.showSnacbar.emit(data);
             this.isBtnLoading.emit(false);
         });
     }
@@ -254,7 +262,7 @@ RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.states.length);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("showSnacbar", ctx.showSnacbar);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _components_snackbar_snackbar_component__WEBPACK_IMPORTED_MODULE_3__["SnackbarComponent"], _components_form_form_component__WEBPACK_IMPORTED_MODULE_4__["FormComponent"]], styles: [".root[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 90vh;\n  background-color: var(---color-primary);\n}\n\n.setTitle[_ngcontent-%COMP%] {\n  font-size: 18pt;\n  font-weight: bolder;\n  color: #b904b9;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxyZWdpc3RyYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLHVDQUFBO0FBQUo7O0FBRUE7RUFDSSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0FBQ0oiLCJmaWxlIjoicmVnaXN0cmF0aW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5yb290e1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDkwdmg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS0tY29sb3ItcHJpbWFyeSk7XHJcbn1cclxuLnNldFRpdGxle1xyXG4gICAgZm9udC1zaXplOiAxOHB0O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGRlcjtcclxuICAgIGNvbG9yOiByZ2IoMTg1LCA0LCAxODUpO1xyXG59XHJcbiJdfQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _components_snackbar_snackbar_component__WEBPACK_IMPORTED_MODULE_3__["SnackbarComponent"], _components_form_form_component__WEBPACK_IMPORTED_MODULE_4__["FormComponent"]], styles: ["*[_ngcontent-%COMP%] {\n  overflow-x: hidden;\n}\n\n.root[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 90vh;\n  background-color: var(---color-primary);\n}\n\n.setTitle[_ngcontent-%COMP%] {\n  font-size: 18pt;\n  font-weight: bolder;\n  color: #b904b9;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxyZWdpc3RyYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtBQUNKOztBQUNBO0VBQ0ksV0FBQTtFQUNBLFlBQUE7RUFDQSx1Q0FBQTtBQUVKOztBQUFBO0VBQ0ksZUFBQTtFQUNBLG1CQUFBO0VBQ0EsY0FBQTtBQUdKIiwiZmlsZSI6InJlZ2lzdHJhdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIip7XHJcbiAgICBvdmVyZmxvdy14OiBoaWRkZW47XHJcbn1cclxuLnJvb3R7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogOTB2aDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLS1jb2xvci1wcmltYXJ5KTtcclxufVxyXG4uc2V0VGl0bGV7XHJcbiAgICBmb250LXNpemU6IDE4cHQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZGVyO1xyXG4gICAgY29sb3I6IHJnYigxODUsIDQsIDE4NSk7XHJcbn1cclxuIl19 */"] });
 
 
 /***/ }),
@@ -624,40 +632,51 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SnackbarComponent", function() { return SnackbarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
 
 class SnackbarComponent {
     constructor() {
-        this.seconds = 5;
+        this.selectionColor = 'bg-success';
+        this.seconds = 3;
         this.isShow = false;
+        this.isFade = false;
         this.message = '';
     }
     ngOnInit() {
         var _a;
         (_a = this.showSnacbar) === null || _a === void 0 ? void 0 : _a.subscribe((value) => {
-            this.message = value;
+            this.message = value.message;
+            this.selectionColor = value.color;
             this.show();
-            console.log(this.message, this.isShow);
         });
     }
     show() {
         this.isShow = true;
         setTimeout(() => {
             this.isShow = false;
+            this.isFade = true;
+            setTimeout(() => {
+                this.isFade = false;
+            }, 2000);
         }, this.seconds * 1000);
+    }
+    getColor() {
     }
 }
 SnackbarComponent.ɵfac = function SnackbarComponent_Factory(t) { return new (t || SnackbarComponent)(); };
-SnackbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SnackbarComponent, selectors: [["app-snackbar"]], inputs: { showSnacbar: "showSnacbar" }, decls: 3, vars: 3, consts: [[1, "snackbar"]], template: function SnackbarComponent_Template(rf, ctx) { if (rf & 1) {
+SnackbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SnackbarComponent, selectors: [["app-snackbar"]], inputs: { showSnacbar: "showSnacbar" }, decls: 3, vars: 6, consts: [[1, "snackbar", "bg-success", 3, "ngClass"]], template: function SnackbarComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("show", ctx.isShow);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("show", ctx.isShow)("fade", ctx.isFade);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx.selectionColor);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.message, " ");
-    } }, styles: [".snackbar[_ngcontent-%COMP%] {\n  position: absolute;\n  border-radius: 10px;\n  display: none;\n  left: 200%;\n  bottom: 5;\n  width: 30%;\n  height: auto;\n  background-color: green;\n  color: white;\n  padding: 30px;\n  transform: translateX(-50%);\n  transition: left 5s;\n}\n\n.snackbar[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  background-color: none;\n}\n\n.snackbar.show[_ngcontent-%COMP%] {\n  display: block;\n  left: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxzbmFja2Jhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLHVCQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSwyQkFBQTtFQUNBLG1CQUFBO0FBQ0o7O0FBRUE7RUFDSSxzQkFBQTtBQUNKOztBQUNBO0VBQ0ksY0FBQTtFQUNBLFNBQUE7QUFFSiIsImZpbGUiOiJzbmFja2Jhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zbmFja2JhcntcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgbGVmdDogMjAwJTtcclxuICAgIGJvdHRvbTogNTtcclxuICAgIHdpZHRoOiAzMCU7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHBhZGRpbmc6IDMwcHg7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XHJcbiAgICB0cmFuc2l0aW9uOiBsZWZ0IDVzO1xyXG5cclxufVxyXG4uc25hY2tiYXIgcHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IG5vbmU7XHJcbn1cclxuLnNuYWNrYmFyLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIGxlZnQ6IDUwJTtcclxufSJdfQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgClass"]], styles: [".snackbar[_ngcontent-%COMP%] {\n  position: absolute;\n  border-radius: 10px;\n  display: none;\n  left: 200%;\n  bottom: 5;\n  width: 30%;\n  height: auto;\n  color: white;\n  padding: 20px;\n  transform: translateX(-50%);\n  justify-content: center;\n  align-items: center;\n}\n\n.snackbar[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin-top: 0;\n  margin-bottom: 0;\n}\n\n.snackbar.show[_ngcontent-%COMP%] {\n  display: flex;\n  left: 50%;\n  animation: show 1s;\n}\n\n.snackbar.fade[_ngcontent-%COMP%] {\n  display: flex;\n  left: -50%;\n  animation: fade 1s;\n}\n\n@keyframes show {\n  0% {\n    left: -50%;\n  }\n  100% {\n    left: 50%;\n  }\n}\n\n@keyframes fade {\n  0% {\n    left: 50%;\n  }\n  100% {\n    left: 70%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxzbmFja2Jhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsMkJBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FBQUo7O0FBSUE7RUFDSSxhQUFBO0VBQ0EsZ0JBQUE7QUFESjs7QUFHQTtFQUNJLGFBQUE7RUFDQSxTQUFBO0VBQ0Esa0JBQUE7QUFBSjs7QUFFQTtFQUNJLGFBQUE7RUFDQSxVQUFBO0VBQ0Esa0JBQUE7QUFDSjs7QUFFQTtFQUNJO0lBQ0ksVUFBQTtFQUNOO0VBQ0U7SUFDSSxTQUFBO0VBQ047QUFDRjs7QUFFQTtFQUNJO0lBQ0ksU0FBQTtFQUFOO0VBRUU7SUFDSSxTQUFBO0VBQU47QUFDRiIsImZpbGUiOiJzbmFja2Jhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4uc25hY2tiYXJ7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxuICAgIGxlZnQ6IDIwMCU7XHJcbiAgICBib3R0b206IDU7XHJcbiAgICB3aWR0aDogMzAlO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuXHJcblxyXG59XHJcbi5zbmFja2JhciBwe1xyXG4gICAgbWFyZ2luLXRvcDogMDtcclxuICAgIG1hcmdpbi1ib3R0b206IDA7XHJcbn1cclxuLnNuYWNrYmFyLnNob3d7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgYW5pbWF0aW9uOiBzaG93IDFzO1xyXG59XHJcbi5zbmFja2Jhci5mYWRle1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGxlZnQ6IC01MCU7XHJcbiAgICBhbmltYXRpb246IGZhZGUgMXM7XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgc2hvdyB7XHJcbiAgICAwJXtcclxuICAgICAgICBsZWZ0OiAtNTAlO1xyXG4gICAgfVxyXG4gICAgMTAwJXtcclxuICAgICAgICBsZWZ0OiA1MCU7XHJcbiAgICB9XHJcbiAgICBcclxufVxyXG5Aa2V5ZnJhbWVzIGZhZGUge1xyXG4gICAgMCV7XHJcbiAgICAgICAgbGVmdDogNTAlO1xyXG4gICAgfVxyXG4gICAgMTAwJXtcclxuICAgICAgICBsZWZ0OiA3MCU7XHJcbiAgICB9XHJcbiAgICBcclxufSJdfQ== */"] });
 
 
 /***/ }),
