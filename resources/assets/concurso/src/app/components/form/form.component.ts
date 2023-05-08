@@ -65,6 +65,21 @@ export class FormComponent implements OnInit {
     )
   }
 
+  formatDate(date:Date):string{
+    const dataFormatada = date.toLocaleString('pt-BR', {
+      timeZone: 'America/Araguaina',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second:'2-digit',
+      hour12: false,
+    });
+    return dataFormatada; // Saída: "08/05/2023, 10:30:05"
+
+  }
+
   cpfFormatClean(cpf:string):string{
     return cpf.replace(/^[\s\uFEFF\xA0]+/g, '').replace(/[\ \/\.\-\\]/g,"").trim();
   }

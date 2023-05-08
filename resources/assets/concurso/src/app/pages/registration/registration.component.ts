@@ -121,7 +121,9 @@ export class RegistrationComponent implements OnInit {
           address:value.endereco,
           cityId: value.cidade_id,
           stateId:value.estado_id,
-          CPF:value.cpf
+          CPF:value.cpf,
+          status:value.situacao,
+          date:new Date(Date.parse(value.created_at))
         })
         this.isCreate=false;
       },

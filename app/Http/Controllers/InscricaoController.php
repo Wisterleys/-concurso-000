@@ -31,21 +31,27 @@ class InscricaoController extends Controller
                                     
                 ]
             );
-            $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
-            if($pessoa){
-                return $this->sendResponse($pessoa,"Registro já existe!",409);
+            $pessoaValidacao = PessoaFisica::where('cpf', $request->cpf)->first();
+            if($pessoaValidacao){
+                $inscricao = Inscricao::where('pessoa_fisica_id', $pessoaValidacao->id)->first();
+                if($inscricao){
+                    return $this->sendResponse($inscricao,"Usuário já possui inscrição!",409);
+                }
             }
-            $pessoa = new PessoaFisica();
-            $pessoa->nome = $request->nome;
-            $pessoa->cpf = $request->cpf;
-            $pessoa->endereco = $request->endereco;
-            $pessoa->cidade_id = $request->cidade_id;
-            $pessoa->estado_id = $request->estado_id;    
-            PessoaFisica::createPessoaFisica($pessoa);
-            $pessoa = PessoaFisica::where('cpf', $request->cpf)->first();
+            if(!$pessoaValidacao){
+
+                $pessoa = new PessoaFisica();
+                $pessoa->nome = $request->nome;
+                $pessoa->cpf = $request->cpf;
+                $pessoa->endereco = $request->endereco;
+                $pessoa->cidade_id = $request->cidade_id;
+                $pessoa->estado_id = $request->estado_id;    
+                PessoaFisica::createPessoaFisica($pessoa);
+                $pessoaValidacao = PessoaFisica::where('cpf', $request->cpf)->first();
+            }
             
             $inscricao = new Inscricao();
-            $inscricao->pessoa_fisica_id = $pessoa->id;
+            $inscricao->pessoa_fisica_id = $pessoaValidacao->id;
             $inscricao->cargo = $request->cargo;
             $inscricao->situacao = $request->situacao;
             
@@ -70,7 +76,6 @@ class InscricaoController extends Controller
             [
             	'id' => 'required',
 			    'pessoa_fisica_id' => 'required',
-			    'cargo' => 'required',
 			    'situacao' => 'required',
                 'nome' => 'required',
 			    'cpf' => 'required',
@@ -80,15 +85,14 @@ class InscricaoController extends Controller
             ]
         );
         
-	    $inscricao = Inscricao::find($request->id);
         $pessoa = PessoaFisica::where('cpf',$request->cpf)->first();
+	    $inscricao = Inscricao::where('pessoa_fisica_id', $pessoa->id)->first();
 	    if($inscricao&&$pessoa){
             $pessoa->nome = $request->nome;
             $pessoa->endereco = $request->endereco;
             $pessoa->cidade_id = $request->cidade_id;
             $pessoa->estado_id = $request->estado_id;
             $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
-            $inscricao->cargo = $request->cargo;
             $inscricao->situacao = $request->situacao;
             
                 $resulPes = PessoaFisica::updatePessoaFisica($pessoa);
@@ -138,7 +142,14 @@ class InscricaoController extends Controller
             
             $inscricao = DB::table('pessoa_fisica')
             ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
-            ->select('pessoa_fisica.*', 'inscricao.*')
+            ->select(
+                'pessoa_fisica.id', 
+                'pessoa_fisica.nome', 
+                'pessoa_fisica.cpf', 
+                'pessoa_fisica.endereco', 
+                'pessoa_fisica.cidade_id', 
+                'pessoa_fisica.estado_id', 
+                'inscricao.*')
             ->where('pessoa_fisica.cpf','=',$cpf)
             ->get();
             

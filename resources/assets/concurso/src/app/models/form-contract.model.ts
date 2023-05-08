@@ -8,4 +8,6 @@ export interface  FormContractModel{
      CPF?:string;
      cityId?:number;
      stateId?:number;
+     status?:string;
+     date?:Date;
 }
