@@ -15,10 +15,18 @@ export class SnackbarComponent implements OnInit {
   public isFade:boolean=false;
   public message:string=''
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
-   
+    if (screen.width <= 768) {
+      let el = document.querySelector('.snackbar') as HTMLDivElement;
+      if (el) {
+        el.style.bottom = '20px';
+      }
+
+    }
     this.showSnacbar?.subscribe(
       (value:SnackBarDataModel)=>{
         this.message=value.message;
@@ -27,6 +35,7 @@ export class SnackbarComponent implements OnInit {
         
       }
     );
+    
   }
   show(){
     this.isShow=true;

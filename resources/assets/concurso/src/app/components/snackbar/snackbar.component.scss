@@ -1,11 +1,13 @@
 
 .snackbar{
     position: absolute;
+    z-index: 3000;
     border-radius: 10px;
     display: none;
     left: 200%;
     bottom: 5;
-    width: 30%;
+    max-width: 300px;
+    width: 60%;
     height: auto;
     color: white;
     padding: 20px;
