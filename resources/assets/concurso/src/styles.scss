@@ -3,23 +3,27 @@
   //color-general
 ---color-primary: rgb(219, 219, 219);
 ---color-hr: gray;
+
+
 }
 
 
 
 
-
+body{
+  background-color: var(---color-primary);
+}
 
 *{
   font-family: sans-serif;
-  background-color: var(---color-primary);
+  
 }
 
 .required::before {
     content: "*";
-    color: red;
     margin-right: 5px;
   }
+
 
 
   
