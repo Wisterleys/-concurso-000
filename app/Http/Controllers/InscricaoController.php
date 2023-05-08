@@ -130,7 +130,8 @@ class InscricaoController extends Controller
             ->select('pessoa_fisica.*', 'inscricao.*')
             ->where('pessoa_fisica.cpf','=',$cpf)
             ->get();
-            return $inscricao?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
+            
+            return count($inscricao) > 0 ?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
         } catch (\Throwable $th) {
            return $this->sendResponse($th,"Erro ao tentar encontrar registro!",$th->status);
         }

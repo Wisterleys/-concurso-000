@@ -10,6 +10,8 @@
                 [title]="formTile" 
                 [submitTile]="submitTile" 
                 (dataForm)="onSubmit($event)"
+                (showData)="showData($event)"
+                [showDataForm]="showDataForm"
                 [btnLoading]="isBtnLoading"
                 [cities]="cities"
                 [states]="states"

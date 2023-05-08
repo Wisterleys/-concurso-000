@@ -14,8 +14,8 @@ export class RegistrationService extends BaseService<any>{
     super(injector);
    }
 
-   getRegistration():any{
-    return this.get('/inscricao');
+   getRegistrationByCPF(cpf:string):any{
+    return this.get(`/inscricao/${cpf}`);
    }
    postRegistration(value:FormContractModel):any{
     return this.post('/inscricao',

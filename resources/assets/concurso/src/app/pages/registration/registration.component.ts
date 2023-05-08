@@ -4,6 +4,8 @@ import { StateContractModel } from 'src/app/models/state-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { SnackBarDataModel } from 'src/app/models/snackbar-data.model';
+import { RegistrationModel } from 'src/app/models/registration.model';
+import { GenericResult } from 'src/app/models/core/generic-result.model';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
+  @Output() showDataForm:EventEmitter<FormContractModel> = new EventEmitter();
   @Output() showSnacbar:EventEmitter<SnackBarDataModel> = new EventEmitter();
   public cities:Array<CityContractModel>=[];
   public states:Array<StateContractModel>=[];
@@ -60,6 +63,31 @@ export class RegistrationComponent implements OnInit {
     )
     
   }
+  showData(cpf:string){
+    this.service.getRegistrationByCPF(cpf).subscribe(
+      (data:GenericResult)=>{
+       let value = data.data[0];
+        console.log(value)
+        this.showDataForm.emit({
+          name:value.nome,
+          job:value.cargo,
+          address:value.endereco,
+          cityId: value.cidade_id,
+          stateId:value.estado_id,
+          CPF:value.cpf
+        })
+      },
+      (error:any)=>{
+        let data:SnackBarDataModel = {
+          message:error.error.message,
+          color:'bg-warning'
+        };
+        this.showSnacbar.emit(data);
+        this.showDataForm.emit({});
+      }
+    )
+  }
+  
   onIsFormLoading(value:boolean){
     this.isLoading=value;
     console.log(value)

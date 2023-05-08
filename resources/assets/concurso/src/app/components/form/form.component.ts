@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CityContractModel } from 'src/app/models/city-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { StateContractModel } from 'src/app/models/state-contract.model';
+
 import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
@@ -16,8 +17,12 @@ export class FormComponent implements OnInit {
   @Input() states:Array<StateContractModel>=[];
   @Input() btnLoading?:EventEmitter<boolean>;
   public isBtnLoading:boolean=false;
+  public isBtnLoadingData:boolean=false;
   @Output() dataForm: EventEmitter<FormContractModel> = new EventEmitter();
+  @Input() showDataForm?: EventEmitter<FormContractModel>;
+  @Output() showData: EventEmitter<string> = new EventEmitter();
   public selectedState?:number;
+  public selectedCity?:number;
   public selectedCities:Array<CityContractModel>=[];
   public formData:FormContractModel={};
   private validadeDefaultMessage ="Ops! Precisa informar"
@@ -30,11 +35,33 @@ export class FormComponent implements OnInit {
         this.isBtnLoading=value;
       }
     )
+    this.showDataForm?.subscribe(
+      (value:FormContractModel)=>{
+        let s = <HTMLInputElement>document.querySelector("#state");
+        this.formData=value;
+        if(value.stateId&&value.cityId){
+          
+
+          s.value = value.stateId.toString();
+          let ciity=value.cityId.toString();
+          this.selectedState = value.stateId;
+          this.selectedCities = this.cities.filter(c=>c.estado_id==this.selectedState);
+          setTimeout(() => {
+            let c = <HTMLInputElement>document.querySelector("#city");
+            c.value = ciity;
+          }, 100);
+        }
+        this.isBtnLoadingData=false;
+      }
+    )
+  }
+  cpfFormatClean(cpf:string):string{
+    return cpf.replace(/^[\s\uFEFF\xA0]+/g, '').replace(/[\ \/\.\-\\]/g,"").trim();
   }
   formDataAssignValues(key:string,value:any){
     switch (key) {
       case 'CPF':
-        this.formData.CPF= value.replace(/[\ \/\.\-\\]/g,"").trimStart().trimEnd();
+        this.formData.CPF= this.cpfFormatClean(value);
         break;
       case 'Nome completo':
       case 'Nome':
@@ -69,6 +96,14 @@ export class FormComponent implements OnInit {
   maskCpf(value:Event){
     let str = (<HTMLInputElement>value.target).value;
     (<HTMLInputElement>value.target).value = str.replace(/\D/g,'')
+    .replace(/([\d]{3})(\d)/,'$1.$2')
+    .replace(/([\d]{3})(\d)/,'$1.$2')
+    .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
+    .replace(/(-[\d]{2})\d+?$/,'$1');
+  }
+  formatCpf(value:string):string{
+   
+    return value.replace(/\D/g,'')
     .replace(/([\d]{3})(\d)/,'$1.$2')
     .replace(/([\d]{3})(\d)/,'$1.$2')
     .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
@@ -129,6 +164,15 @@ export class FormComponent implements OnInit {
       this.dataForm.emit(this.formData)
     }
     
+  }
+  loadData(){
+    let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
+    let isCPF:boolean = this.validateCpf();
+    if(isCPF){
+      this.isBtnLoadingData=true;
+      console.log(this.cpfFormatClean(elCpf.value));
+      this.showData.emit(this.cpfFormatClean(elCpf.value));
+    }
   }
   
 

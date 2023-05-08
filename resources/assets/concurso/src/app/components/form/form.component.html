@@ -5,49 +5,67 @@
         </h2>
         <hr>
         <div class="col-md-6 col-sm-12 row">
+            <div class="form-group mb-3 col-12">
+                <div class="row">
+                    <div class="col-8 required">
+                        <label >CPF</label>
+                        <input 
+                        [disabled]="isBtnLoading"
+                        type="text" 
+                        class="form-control validate-cpf"
+                        [value]="formData.CPF?formatCpf(formData.CPF):''"
+                        (input)="maskCpf($event)"
+                        placeholder="Informe seu CPF...">
+                        <small hidden  class="text-danger">Ops! Precisa informar o CPF!</small>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                        
+                        <button *ngIf="!isBtnLoadingData" class="btn btn-primary w-100 p-2" (click)="loadData()">Carregar</button>
+                        <button *ngIf="isBtnLoadingData" type="submit" class="btn btn-primary w-100 p-1">
+                            <div class="spinner-border text-warning m-0" role="status">
+                          </div></button>
+                          <small style="visibility: hidden;" class="text-danger">Ops! Precisa informar o CPF!</small>
+                    </div>
+                </div>
+                
+            </div>
             <div class="form-group required mb-3 col-12">
-                <label for="exampleInputEmail1">Nome completo</label>
-                <input (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome...">
-                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o nome!</small>
+                <label >Nome completo</label>
+                <input [value]="formData.name?formData.name:''" (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu nome...">
+                <small hidden  class="text-danger">Ops! Precisa informar o nome!</small>
             </div>
             <div class="form-group required mb-3 col-12 ">
-                <label for="exampleInputEmail1">Endereço</label>
-                <input [disabled]="isBtnLoading" type="email" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
-                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o endereço!.</small>
-            </div>
-            <div class="form-group required mb-3 col-12">
-                <label for="exampleInputEmail1">Cargo</label>
-                <input [disabled]="isBtnLoading" type="email" class="form-control validate" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe seu cardo...">
-                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o cargo!</small>
+                <label >Endereço</label>
+                <input [value]="formData.address?formData.address:''" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu e-mail...">
+                <small hidden  class="text-danger">Ops! Precisa informar o endereço!.</small>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group required mb-3 col-12">
-                <label for="exampleInputEmail1">CPF</label>
-                <input 
-                [disabled]="isBtnLoading"
-                 type="text" 
-                 class="form-control validate-cpf"
-                  (input)="maskCpf($event)"
-                  placeholder="Informe seu CPF...">
-                <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar o CPF!</small>
+                <label >Cargo</label>
+                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
+            
             <div class="row">
                 <div class="form-group required mb-3 col-6">
-                    <label for="exampleInputEmail1">Estado</label>
-                    <select [disabled]="isBtnLoading" class="form-select validate" id="" (change)="onSelectedState($event)">
+                    <label >Estado</label>
+                    <select [disabled]="isBtnLoading" 
+                    class="form-select validate" (change)="onSelectedState($event)"
+                   id="state"
+                    >
                         <option value=""></option>
                         <option *ngFor="let s of states" [value]="s.estado_id">{{s.nome}}</option>
                     </select>
-                    <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar um estado!</small>
+                    <small hidden  class="text-danger">Ops! Precisa informar um estado!</small>
                 </div>
                 <div class="form-group required mb-3 col-6">
-                    <label for="exampleInputEmail1">Cidade</label>
-                    <select [disabled]="isBtnLoading" class="form-select validate" id="">
+                    <label >Cidade</label>
+                    <select [disabled]="isBtnLoading" class="form-select validate" id="city">
                         <option value=""></option>
                         <option *ngFor="let c of selectedCities" [value]="c.cidade_id">{{c.nome}}</option>
                     </select>
-                    <small hidden id="emailHelp" class="text-danger">Ops! Precisa informar uma cidade!</small>
+                    <small hidden  class="text-danger">Ops! Precisa informar uma cidade!</small>
                     
                 </div>
             </div>

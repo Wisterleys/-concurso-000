@@ -19,6 +19,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    
   ],
   providers: [
 
