@@ -17,6 +17,8 @@ export class RegistrationComponent implements OnInit {
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   public isCreate:boolean=true;
+  public isPrint:boolean=false;
+  @Output() isPrintChild:EventEmitter<boolean> = new EventEmitter();
   @Output() isBtnLoading:EventEmitter<boolean> = new EventEmitter();
   @Output() showDataForm:EventEmitter<FormContractModel> = new EventEmitter();
   @Output() showSnacbar:EventEmitter<SnackBarDataModel> = new EventEmitter();
@@ -27,11 +29,12 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   
+    
     this.service.getCities().subscribe(
       (value:any)=>{
         this.cities = value.data.cities;
         this.states = value.data.states;
+        
 
       }
     );
@@ -55,6 +58,8 @@ export class RegistrationComponent implements OnInit {
         };
         this.showSnacbar.emit(data);
         this.isBtnLoading.emit(false);
+        this.isCreate=false;
+        
       },
       (error:any)=>{
         let data:SnackBarDataModel = {
@@ -89,6 +94,20 @@ export class RegistrationComponent implements OnInit {
     )
     
   }
+
+  toPrint(){
+    this.isPrintChild.emit(true);
+    this.isPrint=true;
+    console.log("apertou para printar!")
+    setTimeout(() => {
+      window.print();
+      this.isPrintChild.emit(false);
+      this.isPrint=false;
+    }, 100);
+    
+    
+  }
+
   showData(cpf:string){
     this.service.getRegistrationByCPF(cpf).subscribe(
       (data:GenericResult)=>{

@@ -17,6 +17,8 @@ export class FormComponent implements OnInit {
   @Input() cities:Array<CityContractModel>=[];
   @Input() states:Array<StateContractModel>=[];
   @Input() btnLoading?:EventEmitter<boolean>;
+  @Input() isPrintChild?: EventEmitter<boolean>;
+  public isPrint:boolean=false;
   public isBtnLoading:boolean=false;
   public isBtnLoadingData:boolean=false;
   public isFielddisabled=false;
@@ -32,10 +34,14 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.isPrintChild?.subscribe(
+      (value:boolean)=>{
+        this.isPrint=value;
+      }
+    );
     this.btnLoading?.subscribe(
       (value:boolean)=>{
         this.isBtnLoading=value;
-        //this.isFielddisabled=value;
       }
     )
     this.showDataForm?.subscribe(
