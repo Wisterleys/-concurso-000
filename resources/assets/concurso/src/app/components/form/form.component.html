@@ -41,24 +41,15 @@
                 <input [value]="formData.name?formData.name:''" maxlength="250" (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu nome...">
                 <small hidden  class="text-danger">Ops! Precisa informar o nome!</small>
             </div>
-            <div class="form-group mb-3 col-12">
-                <label >CPF</label>
-                <input 
-                [disabled]="isBtnLoading||isFielddisabled"
-                type="text" 
-                id="cpf"
-                class="form-control validate-cpf"
-                [value]="formData.CPF?maskCpf(formData.CPF):''"
-                (input)="formatCpf($event)"
-                placeholder="Informe seu CPF...">
-                <small hidden  class="text-danger">Ops! Precisa informar o CPF!</small>  
-            </div>
-           
-            
             <div class="form-group required mb-3 col-12 ">
                 <label >Endereço</label>
                 <input [value]="formData.address?formData.address:''" maxlength="250" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu endereço...">
                 <small hidden  class="text-danger">Ops! Precisa informar o endereço!.</small>
+            </div>
+            <div class="form-group required mb-3 col-12">
+                <label >Cargo</label>
+                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" maxlength="250" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
@@ -77,6 +68,18 @@
                 </div>
             </div>
             <div class="row">
+                <div class="form-group mb-3 col-12">
+                    <label >CPF</label>
+                    <input 
+                    [disabled]="isBtnLoading||isFielddisabled"
+                    type="text" 
+                    id="cpf"
+                    class="form-control validate-cpf"
+                    [value]="formData.CPF?maskCpf(formData.CPF):''"
+                    (input)="formatCpf($event)"
+                    placeholder="Informe seu CPF...">
+                    <small hidden  class="text-danger">Ops! Precisa informar o CPF!</small>  
+                </div>
                 <div class="form-group required mb-3 col-6">
                     <label >Estado</label>
                     <select [disabled]="isBtnLoading" 
@@ -97,11 +100,6 @@
                     <small hidden  class="text-danger">Ops! Precisa informar uma cidade!</small>
                     
                 </div>
-            </div>
-            <div class="form-group required mb-3 col-12">
-                <label >Cargo</label>
-                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" maxlength="250" type="text" class="form-control validate" placeholder="Informe seu cargo...">
-                <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>
       
