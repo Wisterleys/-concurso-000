@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::redirect('/', '/concurso');
+
+Route::get('/concurso', function () {
     return view('index');
 });

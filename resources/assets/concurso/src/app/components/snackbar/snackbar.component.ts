@@ -20,13 +20,14 @@ export class SnackbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (screen.width <= 768) {
+    
       let el = document.querySelector('.snackbar') as HTMLDivElement;
       if (el) {
-        el.style.bottom = '20px';
+        console.log('aultura da tela',innerHeight*.10)
+        el.style.top = `${innerHeight*.87}px`;
       }
 
-    }
+    
     this.showSnacbar?.subscribe(
       (value:SnackBarDataModel)=>{
         this.message=value.message;
