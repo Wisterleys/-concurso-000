@@ -119,16 +119,28 @@ export class FormComponent implements OnInit {
     }
   }
 
-  realTimeValidateNameInput(event: Event) {
-    let value = (<HTMLSelectElement>event.target).value;
-    value = value.replace(/\d/g,'').replace(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+([ '-][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/, function (match) {
-      return match.toLowerCase()
-        .split(' ')
-        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-        .join(' ');
+  realTimeValidateNameInput(event: Event): void {
+    let value = (event.target as HTMLInputElement).value;
+  
+    // Remover caracteres indesejados
+    value = value.replace(/[^a-zA-Z\s`´çÀ-ÖØ-öø-ÿ]/g, '');
+  
+    value = value.toLowerCase().replace(/(?<![áàâãéèêíïóôõöúçñ])\b\w+/g, function (match) {
+      return match.replace(/^\w/, function (c) {
+        return c.toUpperCase();
+      });
     });
-    (<HTMLSelectElement>event.target).value = value;
+    
+  
+    // Formatando sobrenome com apóstrofo ou acento agudo
+    value = value.replace(/(\b[A-ZÇ][a-zç]*\s)([Dd]['´]?\w+)/g, function (match, firstName, lastName) {
+      return firstName + lastName.charAt(0).toUpperCase() + lastName.substring(1);
+    });
+  
+    (event.target as HTMLInputElement).value = value;
   }
+  
+  
   
   formatCpf(value:Event){
     let str = (<HTMLInputElement>value.target).value;

@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    baseUrl: "http://localhost:8000/api/v1"
+    baseUrl: "http://localhost:89/api/v1"
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -472,7 +472,7 @@ function FormComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Pesquise por CPF ou numero da inscri\u00E7\u00E3o...");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Pesquise por CPF ou numero da inscri\u00E7\u00E3o");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("input", function FormComponent_div_6_Template_input_input_3_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.formatCpf($event); });
@@ -672,11 +672,16 @@ class FormComponent {
     }
     realTimeValidateNameInput(event) {
         let value = event.target.value;
-        value = value.replace(/\d/g, '').replace(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+([ '-][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/, function (match) {
-            return match.toLowerCase()
-                .split(' ')
-                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-                .join(' ');
+        // Remover caracteres indesejados
+        value = value.replace(/[^a-zA-Z\s`´çÀ-ÖØ-öø-ÿ]/g, '');
+        value = value.toLowerCase().replace(/(?<![áàâãéèêíïóôõöúçñ])\b\w+/g, function (match) {
+            return match.replace(/^\w/, function (c) {
+                return c.toUpperCase();
+            });
+        });
+        // Formatando sobrenome com apóstrofo ou acento agudo
+        value = value.replace(/(\b[A-ZÇ][a-zç]*\s)([Dd]['´]?\w+)/g, function (match, firstName, lastName) {
+            return firstName + lastName.charAt(0).toUpperCase() + lastName.substring(1);
         });
         event.target.value = value;
     }
