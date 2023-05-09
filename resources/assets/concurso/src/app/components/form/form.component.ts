@@ -67,7 +67,7 @@ export class FormComponent implements OnInit {
           let c = <HTMLInputElement>document.querySelector("#city");
             c.value = '';
             this.submitTile='Salvar inscrição';
-            this.title='Inscrição do canditado'
+            this.title='Inscrição do candidato'
             this.isFielddisabled=false;
         }
         this.isBtnLoadingData=false;
@@ -123,7 +123,7 @@ export class FormComponent implements OnInit {
     let value = (event.target as HTMLInputElement).value;
   
     // Remover caracteres indesejados
-    value = value.replace(/[^a-zA-Z\s`´çÀ-ÖØ-öø-ÿ]/g, '');
+    value = value.replace(/[^a-zA-Z\s`'´çÀ-ÖØ-öø-ÿ]/g, '');
   
     value = value.toLowerCase().replace(/(?<![áàâãéèêíïóôõöúçñ])\b\w+/g, function (match) {
       return match.replace(/^\w/, function (c) {

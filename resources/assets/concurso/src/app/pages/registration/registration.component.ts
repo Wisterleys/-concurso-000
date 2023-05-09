@@ -12,7 +12,7 @@ import { GenericResult } from 'src/app/models/core/generic-result.model';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  public formTile:string="Inscrição do canditado";
+  public formTile:string="Inscrição do candidato";
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   public isCreate:boolean=true;

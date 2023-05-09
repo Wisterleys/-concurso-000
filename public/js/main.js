@@ -235,7 +235,7 @@ function RegistrationComponent_main_5_Template(rf, ctx) { if (rf & 1) {
 class RegistrationComponent {
     constructor(service) {
         this.service = service;
-        this.formTile = "Inscrição do canditado";
+        this.formTile = "Inscrição do candidato";
         this.submitTile = "Salvar inscrição";
         this.isLoading = false;
         this.isCreate = true;
@@ -472,7 +472,7 @@ function FormComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Pesquise por CPF ou numero da inscri\u00E7\u00E3o");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Pesquise por CPF ou n\u00FAmero da inscri\u00E7\u00E3o");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("input", function FormComponent_div_6_Template_input_input_3_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.formatCpf($event); });
@@ -624,7 +624,7 @@ class FormComponent {
                 let c = document.querySelector("#city");
                 c.value = '';
                 this.submitTile = 'Salvar inscrição';
-                this.title = 'Inscrição do canditado';
+                this.title = 'Inscrição do candidato';
                 this.isFielddisabled = false;
             }
             this.isBtnLoadingData = false;
@@ -673,7 +673,7 @@ class FormComponent {
     realTimeValidateNameInput(event) {
         let value = event.target.value;
         // Remover caracteres indesejados
-        value = value.replace(/[^a-zA-Z\s`´çÀ-ÖØ-öø-ÿ]/g, '');
+        value = value.replace(/[^a-zA-Z\s`'´çÀ-ÖØ-öø-ÿ]/g, '');
         value = value.toLowerCase().replace(/(?<![áàâãéèêíïóôõöúçñ])\b\w+/g, function (match) {
             return match.replace(/^\w/, function (c) {
                 return c.toUpperCase();
