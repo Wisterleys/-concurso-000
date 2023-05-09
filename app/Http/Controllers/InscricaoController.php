@@ -150,7 +150,10 @@ class InscricaoController extends Controller
                 'pessoa_fisica.estado_id',
                 )
             ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
-            ->where('pessoa_fisica.cpf','=',$search)
+            ->where(function ($query)use($search){
+
+                $query->where('pessoa_fisica.cpf','=',$search)->orWhere('inscricao.id','=',$search);
+            })
             ->get();
             
             return count($inscricao) > 0 ?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
