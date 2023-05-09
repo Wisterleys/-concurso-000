@@ -415,7 +415,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: "", component: _pages_registration_registration_component__WEBPACK_IMPORTED_MODULE_1__["RegistrationComponent"] }
+    { path: "concurso", component: _pages_registration_registration_component__WEBPACK_IMPORTED_MODULE_1__["RegistrationComponent"] }
 ];
 class AppRoutingModule {
 }
