@@ -7,6 +7,10 @@
 
 }
 
+*{
+  font-family: sans-serif;
+  
+}
 
 
 
@@ -14,15 +18,33 @@ body{
   background-color: var(---color-primary);
 }
 
-*{
-  font-family: sans-serif;
-  
-}
 
 .required::before {
     content: "*";
     margin-right: 5px;
-  }
+}
+
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #dddcdc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(---color-hr);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(#353535);
+}
 
 
 

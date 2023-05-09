@@ -68,7 +68,7 @@ export class FormComponent implements OnInit {
 
   formatDate(date:Date):string{
     const dataFormatada = date.toLocaleString('pt-BR', {
-      timeZone: 'America/Araguaina',
+      timeZone: 'America/Sao_Paulo',
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
       second:'2-digit',
       hour12: false,
     });
-    return dataFormatada; // Saída: "08/05/2023, 10:30:05"
+    return dataFormatada.replace(',',''); // Saída: "08/05/2023 10:30:05"
 
   }
 
@@ -197,12 +197,12 @@ export class FormComponent implements OnInit {
   }
 
   loadData(){
-    let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
-    let isCPF:boolean = this.validateCpf();
-    if(isCPF){
+    let elSearch = <HTMLInputElement>document.querySelector(".search");
+    
+    if(elSearch.value){
       this.isBtnLoadingData=true;
-      console.log(this.cpfFormatClean(elCpf.value));
-      this.showData.emit(this.cpfFormatClean(elCpf.value));
+      console.log(this.cpfFormatClean(elSearch.value));
+      this.showData.emit(this.cpfFormatClean(elSearch.value));
     }
   }
   
