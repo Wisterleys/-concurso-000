@@ -1239,4 +1239,10 @@ body {
   background: var(#353535);
 }
 
+@media print {
+  @page {
+    size: tabloid;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map*/
