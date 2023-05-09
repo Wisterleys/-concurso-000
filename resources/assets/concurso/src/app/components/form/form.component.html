@@ -38,7 +38,7 @@
             </div>
             <div class="form-group required mb-3 col-12">
                 <label >Nome completo</label>
-                <input [value]="formData.name?formData.name:''" (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu nome...">
+                <input [value]="formData.name?formData.name:''" maxlength="250" (input)="realTimeValidateNameInput($event)" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu nome...">
                 <small hidden  class="text-danger">Ops! Precisa informar o nome!</small>
             </div>
             <div class="form-group mb-3 col-12">
@@ -46,6 +46,7 @@
                 <input 
                 [disabled]="isBtnLoading||isFielddisabled"
                 type="text" 
+                id="cpf"
                 class="form-control validate-cpf"
                 [value]="formData.CPF?maskCpf(formData.CPF):''"
                 (input)="formatCpf($event)"
@@ -56,7 +57,7 @@
             
             <div class="form-group required mb-3 col-12 ">
                 <label >Endereço</label>
-                <input [value]="formData.address?formData.address:''" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu endereço...">
+                <input [value]="formData.address?formData.address:''" maxlength="250" [disabled]="isBtnLoading" type="text" class="form-control validate" placeholder="Digite seu endereço...">
                 <small hidden  class="text-danger">Ops! Precisa informar o endereço!.</small>
             </div>
         </div>
@@ -99,7 +100,7 @@
             </div>
             <div class="form-group required mb-3 col-12">
                 <label >Cargo</label>
-                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" maxlength="250" type="text" class="form-control validate" placeholder="Informe seu cargo...">
                 <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>

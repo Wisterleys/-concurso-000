@@ -42,6 +42,7 @@ export class FormComponent implements OnInit {
     this.btnLoading?.subscribe(
       (value:boolean)=>{
         this.isBtnLoading=value;
+        this.createdloadData();
       }
     )
     this.showDataForm?.subscribe(
@@ -60,6 +61,14 @@ export class FormComponent implements OnInit {
             let c = <HTMLInputElement>document.querySelector("#city");
             c.value = ciity;
           }, 100);
+        }else{
+          let s = <HTMLInputElement>document.querySelector("#state");
+          s.value='';
+          let c = <HTMLInputElement>document.querySelector("#city");
+            c.value = '';
+            this.submitTile='Salvar inscrição';
+            this.title='Inscrição do canditado'
+            this.isFielddisabled=false;
         }
         this.isBtnLoadingData=false;
       }
@@ -196,6 +205,15 @@ export class FormComponent implements OnInit {
     
   }
 
+  createdloadData(){
+    let elSearch = <HTMLInputElement>document.querySelector("#cpf");
+    
+    if(elSearch.value){
+      this.isBtnLoadingData=true;
+      console.log(this.cpfFormatClean(elSearch.value));
+      this.showData.emit(this.cpfFormatClean(elSearch.value));
+    }
+  }
   loadData(){
     let elSearch = <HTMLInputElement>document.querySelector(".search");
     

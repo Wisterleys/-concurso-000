@@ -30,6 +30,9 @@
                     </div>
                 </div>
             </app-form>
+            <div class="d-flex justify-content-center">
+                <a *ngIf="!isCreate&&!isPrint" class="link p-0 mt-0 mb-5" (click)="cleanData()">Retornar para inscrição</a>
+            </div>
             </main>
             
             <footer>
