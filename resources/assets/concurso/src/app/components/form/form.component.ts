@@ -42,6 +42,7 @@ export class FormComponent implements OnInit {
     this.btnLoading?.subscribe(
       (value:boolean)=>{
         this.isBtnLoading=value;
+        this.createdloadData();
       }
     )
     this.showDataForm?.subscribe(
@@ -49,7 +50,8 @@ export class FormComponent implements OnInit {
         let s = <HTMLInputElement>document.querySelector("#state");
         this.formData=value;
         if(value.stateId&&value.cityId){
-          this.submitTile = "Atualizar dados"
+          this.submitTile = "Atualizar dados";
+          this.title='Comprovante de Inscrição';
           this.isFielddisabled=true;
           s.value = value.stateId.toString();
           let ciity=value.cityId.toString();
@@ -59,6 +61,14 @@ export class FormComponent implements OnInit {
             let c = <HTMLInputElement>document.querySelector("#city");
             c.value = ciity;
           }, 100);
+        }else{
+          let s = <HTMLInputElement>document.querySelector("#state");
+          s.value='';
+          let c = <HTMLInputElement>document.querySelector("#city");
+            c.value = '';
+            this.submitTile='Salvar inscrição';
+            this.title='Inscrição do candidato'
+            this.isFielddisabled=false;
         }
         this.isBtnLoadingData=false;
       }
@@ -67,7 +77,7 @@ export class FormComponent implements OnInit {
 
   formatDate(date:Date):string{
     const dataFormatada = date.toLocaleString('pt-BR', {
-      timeZone: 'America/Araguaina',
+      timeZone: 'America/Sao_Paulo',
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -76,7 +86,7 @@ export class FormComponent implements OnInit {
       second:'2-digit',
       hour12: false,
     });
-    return dataFormatada; // Saída: "08/05/2023, 10:30:05"
+    return dataFormatada.replace(',',''); // Saída: "08/05/2023 10:30:05"
 
   }
 
@@ -109,16 +119,28 @@ export class FormComponent implements OnInit {
     }
   }
 
-  realTimeValidateNameInput(event: Event) {
-    let value = (<HTMLSelectElement>event.target).value;
-    value = value.replace(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+([ '-][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/, function (match) {
-      return match.toLowerCase()
-        .split(' ')
-        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-        .join(' ');
+  realTimeValidateNameInput(event: Event): void {
+    let value = (event.target as HTMLInputElement).value;
+  
+    // Remover caracteres indesejados
+    value = value.replace(/[^a-zA-Z\s`'´çÀ-ÖØ-öø-ÿ]/g, '');
+  
+    value = value.toLowerCase().replace(/(?<![áàâãéèêíïóôõöúçñ])\b\w+/g, function (match) {
+      return match.replace(/^\w/, function (c) {
+        return c.toUpperCase();
+      });
     });
-    (<HTMLSelectElement>event.target).value = value;
+    
+  
+    // Formatando sobrenome com apóstrofo ou acento agudo
+    value = value.replace(/(\b[A-ZÇ][a-zç]*\s)([Dd]['´]?\w+)/g, function (match, firstName, lastName) {
+      return firstName + lastName.charAt(0).toUpperCase() + lastName.substring(1);
+    });
+  
+    (event.target as HTMLInputElement).value = value;
   }
+  
+  
   
   formatCpf(value:Event){
     let str = (<HTMLInputElement>value.target).value;
@@ -195,13 +217,22 @@ export class FormComponent implements OnInit {
     
   }
 
-  loadData(){
-    let elCpf = <HTMLInputElement>document.querySelector(".validate-cpf");
-    let isCPF:boolean = this.validateCpf();
-    if(isCPF){
+  createdloadData(){
+    let elSearch = <HTMLInputElement>document.querySelector("#cpf");
+    
+    if(elSearch.value){
       this.isBtnLoadingData=true;
-      console.log(this.cpfFormatClean(elCpf.value));
-      this.showData.emit(this.cpfFormatClean(elCpf.value));
+      console.log(this.cpfFormatClean(elSearch.value));
+      this.showData.emit(this.cpfFormatClean(elSearch.value));
+    }
+  }
+  loadData(){
+    let elSearch = <HTMLInputElement>document.querySelector(".search");
+    
+    if(elSearch.value){
+      this.isBtnLoadingData=true;
+      console.log(this.cpfFormatClean(elSearch.value));
+      this.showData.emit(this.cpfFormatClean(elSearch.value));
     }
   }
   

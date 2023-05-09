@@ -4,7 +4,6 @@ import { StateContractModel } from 'src/app/models/state-contract.model';
 import { FormContractModel } from 'src/app/models/form-contract.model';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { SnackBarDataModel } from 'src/app/models/snackbar-data.model';
-import { RegistrationModel } from 'src/app/models/registration.model';
 import { GenericResult } from 'src/app/models/core/generic-result.model';
 
 @Component({
@@ -13,7 +12,7 @@ import { GenericResult } from 'src/app/models/core/generic-result.model';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  public formTile:string="Inscrição do canditado";
+  public formTile:string="Inscrição do candidato";
   public submitTile: string="Salvar inscrição";
   public isLoading:boolean=false;
   public isCreate:boolean=true;
@@ -107,7 +106,10 @@ export class RegistrationComponent implements OnInit {
     
     
   }
-
+  cleanData(){
+    this.showDataForm.emit({});
+    this.isCreate=true;
+  }
   showData(cpf:string){
     this.service.getRegistrationByCPF(cpf).subscribe(
       (data:GenericResult)=>{

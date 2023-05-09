@@ -1200,17 +1200,49 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + 2px)}
   ---color-hr: gray;
 }
 
-body {
-  background-color: var(---color-primary);
-}
-
 * {
   font-family: sans-serif;
+}
+
+body {
+  background-color: var(---color-primary);
 }
 
 .required::before {
   content: "*";
   margin-right: 5px;
+}
+
+/* scrollbar */
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #dddcdc;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: var(---color-hr);
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(#353535);
+}
+
+@media print {
+  @page {
+    size: tabloid;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map*/
