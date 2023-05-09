@@ -49,7 +49,8 @@ export class FormComponent implements OnInit {
         let s = <HTMLInputElement>document.querySelector("#state");
         this.formData=value;
         if(value.stateId&&value.cityId){
-          this.submitTile = "Atualizar dados"
+          this.submitTile = "Atualizar dados";
+          this.title='Comprovante de Inscrição';
           this.isFielddisabled=true;
           s.value = value.stateId.toString();
           let ciity=value.cityId.toString();

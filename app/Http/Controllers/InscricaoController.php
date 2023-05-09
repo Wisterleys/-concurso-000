@@ -136,21 +136,21 @@ class InscricaoController extends Controller
         return $this->sendResponse(Inscricao::orderBy('cargo')->get());
     }
 
-    public function show(Request $request, $cpf)
+    public function show(Request $request, $search)
     {
         try {
             
-            $inscricao = DB::table('pessoa_fisica')
-            ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
-            ->select(
-                'pessoa_fisica.id', 
+            $inscricao = PessoaFisica::select(
+                'inscricao.*',
+                'pessoa_fisica.id as pessoa_id', 
                 'pessoa_fisica.nome', 
                 'pessoa_fisica.cpf', 
                 'pessoa_fisica.endereco', 
                 'pessoa_fisica.cidade_id', 
-                'pessoa_fisica.estado_id', 
-                'inscricao.*')
-            ->where('pessoa_fisica.cpf','=',$cpf)
+                'pessoa_fisica.estado_id',
+                )
+            ->join('inscricao', 'inscricao.pessoa_fisica_id', '=', 'pessoa_fisica.id')
+            ->where('pessoa_fisica.cpf','=',$search)
             ->get();
             
             return count($inscricao) > 0 ?$this->sendResponse($inscricao):$this->sendResponse([],'Nenhum registro encontrado!',404);
