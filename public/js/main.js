@@ -187,30 +187,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function RegistrationComponent_main_5_div_2_Template(rf, ctx) { if (rf & 1) {
-    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RegistrationComponent_main_5_div_2_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r2.toPrint(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 10);
+} }
+function RegistrationComponent_main_5_div_3_Template(rf, ctx) { if (rf & 1) {
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RegistrationComponent_main_5_div_3_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r3.toPrint(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "svg", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "path", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "path", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "svg", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "path", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "path", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function RegistrationComponent_main_5_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "app-form", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dataForm", function RegistrationComponent_main_5_Template_app_form_dataForm_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.onSubmit($event); })("showData", function RegistrationComponent_main_5_Template_app_form_showData_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.showData($event); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, RegistrationComponent_main_5_div_2_Template, 5, 0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dataForm", function RegistrationComponent_main_5_Template_app_form_dataForm_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.onSubmit($event); })("showData", function RegistrationComponent_main_5_Template_app_form_showData_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.showData($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, RegistrationComponent_main_5_div_2_Template, 1, 0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, RegistrationComponent_main_5_div_3_Template, 5, 0, "div", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", ctx_r0.formTile)("submitTile", ctx_r0.submitTile)("showDataForm", ctx_r0.showDataForm)("btnLoading", ctx_r0.isBtnLoading)("isPrintChild", ctx_r0.isPrintChild)("cities", ctx_r0.cities)("states", ctx_r0.states);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.isCreate);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r0.isCreate && !ctx_r0.isPrint);
 } }
@@ -319,7 +325,7 @@ class RegistrationComponent {
     }
 }
 RegistrationComponent.ɵfac = function RegistrationComponent_Factory(t) { return new (t || RegistrationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_registration_service__WEBPACK_IMPORTED_MODULE_1__["RegistrationService"])); };
-RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegistrationComponent, selectors: [["app-registration"]], outputs: { isPrintChild: "isPrintChild", isBtnLoading: "isBtnLoading", showDataForm: "showDataForm", showSnacbar: "showSnacbar" }, decls: 8, vars: 2, consts: [[1, "root"], [1, "container"], [1, "mb-2", "mt-5", "row", "col-12", "text-center"], [1, "col-12", "setTitle"], ["class", "", 4, "ngIf"], [3, "showSnacbar"], [1, ""], [3, "title", "submitTile", "showDataForm", "btnLoading", "isPrintChild", "cities", "states", "dataForm", "showData"], ["class", "m-0 d-flex justify-content-end", 4, "ngIf"], [1, "m-0", "d-flex", "justify-content-end"], [1, "btn", "btn-primary", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "width", "16", "height", "16", "fill", "currentColor", "viewBox", "0 0 16 16", 1, "bi", "bi-printer"], ["d", "M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"], ["d", "M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"]], template: function RegistrationComponent_Template(rf, ctx) { if (rf & 1) {
+RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegistrationComponent, selectors: [["app-registration"]], outputs: { isPrintChild: "isPrintChild", isBtnLoading: "isBtnLoading", showDataForm: "showDataForm", showSnacbar: "showSnacbar" }, decls: 8, vars: 2, consts: [[1, "root"], [1, "container"], [1, "mb-2", "mt-5", "row", "col-12", "text-center"], [1, "col-12", "setTitle"], ["class", "", 4, "ngIf"], [3, "showSnacbar"], [1, ""], [3, "title", "submitTile", "showDataForm", "btnLoading", "isPrintChild", "cities", "states", "dataForm", "showData"], ["class", "m-4", 4, "ngIf"], ["class", "m-0 d-flex justify-content-end", 4, "ngIf"], [1, "m-4"], [1, "m-0", "d-flex", "justify-content-end"], [1, "btn", "btn-primary", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "width", "16", "height", "16", "fill", "currentColor", "viewBox", "0 0 16 16", 1, "bi", "bi-printer"], ["d", "M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"], ["d", "M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"]], template: function RegistrationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "section", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "header", 2);
@@ -327,7 +333,7 @@ RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Concurso P\u00FAblico para Desenvolvedor de Software");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, RegistrationComponent_main_5_Template, 3, 8, "main", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, RegistrationComponent_main_5_Template, 4, 9, "main", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "footer");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "app-snackbar", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -466,7 +472,7 @@ function FormComponent_div_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Inscri\u00E7\u00E3o");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "small", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Ops! Precisa informar o cargo!");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -478,20 +484,20 @@ function FormComponent_div_18_Template(rf, ctx) { if (rf & 1) {
 } }
 function FormComponent_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Situa\u00E7\u00E3o");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "input", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "small", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Ops! Precisa informar o cargo!");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Data Inscri\u00E7\u00E3o");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "input", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "small", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Ops! Precisa informar o cargo!");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -504,7 +510,7 @@ function FormComponent_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r3.formatDate(ctx_r3.formData.date))("disabled", ctx_r3.isBtnLoading || ctx_r3.isFielddisabled);
 } }
-function FormComponent_option_51_Template(rf, ctx) { if (rf & 1) {
+function FormComponent_option_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -514,7 +520,7 @@ function FormComponent_option_51_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](s_r10.nome);
 } }
-function FormComponent_option_59_Template(rf, ctx) { if (rf & 1) {
+function FormComponent_option_53_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -706,7 +712,7 @@ class FormComponent {
     }
 }
 FormComponent.ɵfac = function FormComponent_Factory(t) { return new (t || FormComponent)(); };
-FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FormComponent, selectors: [["app-form"]], inputs: { title: "title", submitTile: "submitTile", cities: "cities", states: "states", btnLoading: "btnLoading", isPrintChild: "isPrintChild", showDataForm: "showDataForm" }, outputs: { dataForm: "dataForm", showData: "showData" }, ngContentSelectors: _c0, decls: 68, vars: 19, consts: [[1, "col-12"], [1, ""], [1, "mb-5", "mt-5", "text-center", "setTitle"], [1, "row"], [1, "col-md-5", "col-sm-12"], ["type", "text", "placeholder", "Pesquise...", 1, "form-control", "search", 3, "input"], [2, "visibility", "hidden"], [1, "col-md-2", "col-sm-12", "d-flex", "align-items-center"], ["class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-primary w-100 p-1", 4, "ngIf"], [1, "col-md-4", "col-sm-12"], [1, "col-md-6", "col-sm-12"], ["class", "form-group required mb-3 col-12", 4, "ngIf"], [1, "form-group", "required", "mb-3", "col-12"], ["type", "text", "placeholder", "Digite seu nome...", 1, "form-control", "validate", 3, "value", "disabled", "input"], ["hidden", "", 1, "text-danger"], [1, "form-group", "mb-3", "col-12"], ["type", "text", "placeholder", "Informe seu CPF...", 1, "form-control", "validate-cpf", 3, "disabled", "value", "input"], ["type", "text", "placeholder", "Digite seu endere\u00E7o...", 1, "form-control", "validate", 3, "value", "disabled"], ["class", "row", 4, "ngIf"], ["type", "text", "placeholder", "Informe seu cargo...", 1, "form-control", "validate", 3, "value", "disabled"], [1, "form-group", "required", "mb-3", "col-6"], ["id", "state", 1, "form-select", "validate", 3, "disabled", "change"], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "city", 1, "form-select", "validate", 3, "disabled"], [1, "col-md-8", "col-sm-1"], [1, "col-md-4", "col-sm-5"], ["type", "submit", "class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-success w-100 p-1", 4, "ngIf"], [1, "col-12", "mt-5"], [1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "width", "19", "height", "19", "fill", "currentColor", "viewBox", "0 0 16 16", 1, "bi", "bi-search"], ["d", "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"], ["type", "submit", 1, "btn", "btn-primary", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning", "m-0"], [3, "value"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning"]], template: function FormComponent_Template(rf, ctx) { if (rf & 1) {
+FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FormComponent, selectors: [["app-form"]], inputs: { title: "title", submitTile: "submitTile", cities: "cities", states: "states", btnLoading: "btnLoading", isPrintChild: "isPrintChild", showDataForm: "showDataForm" }, outputs: { dataForm: "dataForm", showData: "showData" }, ngContentSelectors: _c0, decls: 68, vars: 19, consts: [[1, "col-12"], [1, ""], [1, "mt-3", "text-center", "setTitle"], [1, "row"], [1, "col-md-5", "col-sm-12"], ["type", "text", "placeholder", "Pesquise...", 1, "form-control", "search", 3, "input"], [2, "visibility", "hidden"], [1, "col-md-2", "col-sm-12", "d-flex", "align-items-center"], ["class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-primary w-100 p-1", 4, "ngIf"], [1, "col-md-4", "col-sm-12"], [1, "col-md-6", "col-sm-12"], ["class", "form-group required mb-3 col-12", 4, "ngIf"], [1, "form-group", "required", "mb-3", "col-12"], ["type", "text", "placeholder", "Digite seu nome...", 1, "form-control", "validate", 3, "value", "disabled", "input"], ["hidden", "", 1, "text-danger"], [1, "form-group", "mb-3", "col-12"], ["type", "text", "placeholder", "Informe seu CPF...", 1, "form-control", "validate-cpf", 3, "disabled", "value", "input"], ["type", "text", "placeholder", "Digite seu endere\u00E7o...", 1, "form-control", "validate", 3, "value", "disabled"], ["class", "row", 4, "ngIf"], [1, "form-group", "required", "mb-3", "col-6"], ["id", "state", 1, "form-select", "validate", 3, "disabled", "change"], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "city", 1, "form-select", "validate", 3, "disabled"], ["type", "text", "placeholder", "Informe seu cargo...", 1, "form-control", "validate", 3, "value", "disabled"], [1, "col-md-8", "col-sm-1"], [1, "col-md-4", "col-sm-5"], ["type", "submit", "class", "btn btn-success w-100 p-2", 3, "click", 4, "ngIf"], ["type", "submit", "class", "btn btn-success w-100 p-1", 4, "ngIf"], [1, "col-12", "mt-5"], [1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "width", "19", "height", "19", "fill", "currentColor", "viewBox", "0 0 16 16", 1, "bi", "bi-search"], ["d", "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"], ["type", "submit", 1, "btn", "btn-primary", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning", "m-0"], [3, "value"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-2", 3, "click"], ["type", "submit", 1, "btn", "btn-success", "w-100", "p-1"], ["role", "status", 1, "spinner-border", "text-warning"]], template: function FormComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -768,40 +774,40 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 11);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, FormComponent_div_38_Template, 13, 4, "div", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Cargo");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "Estado");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "input", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "small", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "Ops! Precisa informar o cargo!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "select", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FormComponent_Template_select_change_43_listener($event) { return ctx.onSelectedState($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "option", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, FormComponent_option_45_Template, 2, 2, "option", 23);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "Estado");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "select", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FormComponent_Template_select_change_49_listener($event) { return ctx.onSelectedState($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](50, "option", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](51, FormComponent_option_51_Template, 2, 2, "option", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "small", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](53, "Ops! Precisa informar um estado!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "small", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "Ops! Precisa informar um estado!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "div", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "Cidade");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "div", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Cidade");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "select", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "option", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](59, FormComponent_option_59_Template, 2, 2, "option", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "select", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "option", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](53, FormComponent_option_53_Template, 2, 2, "option", 23);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "small", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Ops! Precisa informar uma cidade!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "Cargo");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](59, "input", 25);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "small", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61, "Ops! Precisa informar uma cidade!");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61, "Ops! Precisa informar o cargo!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -832,9 +838,7 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.address ? ctx.formData.address : "")("disabled", ctx.isBtnLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.formData.date);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.job ? ctx.formData.job : "")("disabled", ctx.isBtnLoading || ctx.isFielddisabled);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.isBtnLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.states);
@@ -842,6 +846,8 @@ FormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.isBtnLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.selectedCities);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.formData.job ? ctx.formData.job : "")("disabled", ctx.isBtnLoading || ctx.isFielddisabled);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isBtnLoading && !ctx.isPrint);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);

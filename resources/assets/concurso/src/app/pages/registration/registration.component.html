@@ -18,6 +18,9 @@
                 [cities]="cities"
                 [states]="states"
                 >
+                <div *ngIf="isCreate" class="m-4">
+
+                </div>
                 <div *ngIf="!isCreate&&!isPrint" class="m-0 d-flex justify-content-end">
                     <div class="btn btn-primary" (click)="toPrint()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
