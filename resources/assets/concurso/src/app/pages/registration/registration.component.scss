@@ -9,8 +9,10 @@
 .setTitle{
     font-size: 18pt;
     font-weight: bolder;
-    color: rgb(185, 4, 185);
+    color: var(---primary-color);
+    overflow: hidden;
 }
 .link {
     cursor: pointer;
 }
+
