@@ -1,7 +1,7 @@
 <div class="root-nav">
-    <img *ngIf="hasImageHeader" src="assets/img/banner.webp" alt="Logo" class="img-fluid" style="width: 100%; height: 100%;">
+    <img *ngIf="hasImageHeader" src="assets/img/banner.webp" alt="Logo" class="img-fluid" style="width: 100%;">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
               <a class="navbar-brand" routerLink="/">
                 <img src="assets/img/logo-fepese.png" alt="Logo" width="70" class="img-fluid">
@@ -20,7 +20,7 @@
                     <div></div>
                   </li>
                   
-                  <li class="nav-item no-header-bg" (click)="selected($event)">
+                  <li class="nav-item" (click)="selected($event)">
                     <a class="nav-link" routerLink="/concurso">Inscrição</a>
                     <div></div>
                   </li>
