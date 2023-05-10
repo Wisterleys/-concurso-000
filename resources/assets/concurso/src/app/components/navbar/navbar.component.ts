@@ -15,4 +15,13 @@ export class NavbarComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  selected(event:Event){
+    document.querySelectorAll('.nav-item').forEach(el=>{
+      let div = el.querySelector('div');
+      div!.style.display='none';
+    })
+    let label = (<HTMLLIElement>event.target).parentNode?.querySelector('div');
+    label!.style.display='block';
+    
+  }
 }

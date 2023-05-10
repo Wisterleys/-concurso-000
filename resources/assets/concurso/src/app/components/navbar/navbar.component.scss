@@ -1,6 +1,19 @@
-.nav-link::after{
-    content: '';
-    width: 20;
-    height: 5;
-    background-color: var(---color-primary);
+.nav-item{
+    position: relative;
+}
+.nav-item div{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: none;
+    width: 55px;
+    height: 3px;
+    transform: translateX(-50%);
+    background-color: var(---primary-color);
+}
+
+@media print{
+    .root-nav{
+        display: none;
+    }
 }
