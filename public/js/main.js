@@ -200,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NavbarComponent_img_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 15);
 } }
 class NavbarComponent {
     constructor() {
@@ -218,12 +218,14 @@ class NavbarComponent {
             let div = el.querySelector('div');
             div.style.display = 'none';
         });
-        let label = (_a = event.target.parentNode) === null || _a === void 0 ? void 0 : _a.querySelector('div');
-        label.style.display = 'block';
+        let classes = event.target.parentNode;
+        let div = (_a = event.target.parentNode) === null || _a === void 0 ? void 0 : _a.querySelector('div');
+        div.style.display = 'block';
+        (classes.className.search("no-header-bg") > -1) ? this.hasImageHeader = false : this.hasImageHeader = true;
     }
 }
 NavbarComponent.ɵfac = function NavbarComponent_Factory(t) { return new (t || NavbarComponent)(); };
-NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavbarComponent, selectors: [["app-navbar"]], inputs: { hasImageHeader: "hasImageHeader" }, decls: 34, vars: 3, consts: [[1, "root-nav"], ["src", "assets/img/banner.webp", "alt", "Logo", "class", "img-fluid", "style", "width: 100%; height: 100%;", 4, "ngIf"], [1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], [1, "container"], ["routerLink", "/", 1, "navbar-brand"], ["src", "assets/img/logo-fepese.png", "alt", "Logo", "width", "70", 1, "img-fluid"], ["type", "button", 1, "navbar-toggler", 3, "click"], [1, "navbar-toggler-icon"], ["id", "navbarNav", 1, "collapse", "navbar-collapse", "justify-content-end"], [1, "navbar-nav"], [1, "nav-item", 3, "click"], ["routerLink", "/", 1, "nav-link"], [1, "nav-link"], ["routerLink", "/concurso", 1, "nav-link"], ["src", "assets/img/banner.webp", "alt", "Logo", 1, "img-fluid", 2, "width", "100%", "height", "100%"]], template: function NavbarComponent_Template(rf, ctx) { if (rf & 1) {
+NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavbarComponent, selectors: [["app-navbar"]], inputs: { hasImageHeader: "hasImageHeader" }, decls: 34, vars: 3, consts: [[1, "root-nav"], ["src", "assets/img/banner.webp", "alt", "Logo", "class", "img-fluid", "style", "width: 100%; height: 100%;", 4, "ngIf"], [1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], [1, "container"], ["routerLink", "/", 1, "navbar-brand"], ["src", "assets/img/logo-fepese.png", "alt", "Logo", "width", "70", 1, "img-fluid"], ["type", "button", 1, "navbar-toggler", 3, "click"], [1, "navbar-toggler-icon"], ["id", "navbarNav", 1, "collapse", "navbar-collapse", "justify-content-end"], [1, "navbar-nav"], [1, "nav-item", 3, "click"], ["routerLink", "/", 1, "nav-link"], [1, "nav-link"], [1, "nav-item", "no-header-bg", 3, "click"], ["routerLink", "/concurso", 1, "nav-link"], ["src", "assets/img/banner.webp", "alt", "Logo", 1, "img-fluid", 2, "width", "100%", "height", "100%"]], template: function NavbarComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, NavbarComponent_img_1_Template, 1, 0, "img", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "nav", 2);
@@ -272,9 +274,9 @@ NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "li", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "li", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NavbarComponent_Template_li_click_30_listener($event) { return ctx.selected($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "a", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "a", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Inscri\u00E7\u00E3o");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "div");

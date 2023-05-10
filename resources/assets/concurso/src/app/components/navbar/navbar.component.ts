@@ -20,8 +20,10 @@ export class NavbarComponent implements OnInit {
       let div = el.querySelector('div');
       div!.style.display='none';
     })
-    let label = (<HTMLLIElement>event.target).parentNode?.querySelector('div');
-    label!.style.display='block';
+    let classes = (<HTMLLIElement>event.target).parentNode as HTMLLIElement;
+    let div = (<HTMLLIElement>event.target).parentNode?.querySelector('div');
+    div!.style.display='block';
+    (classes.className.search("no-header-bg")>-1)?this.hasImageHeader=false:this.hasImageHeader=true;
     
   }
 }
