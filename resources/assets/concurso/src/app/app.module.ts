@@ -10,6 +10,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EditalComponent } from './pages/edital/edital.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SnackbarComponent,
     HomeComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    EditalComponent
   ],
   imports: [
     BrowserModule,
