@@ -1,0 +1,19 @@
+.nav-item{
+    position: relative;
+}
+.nav-item div{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: none;
+    width: 55px;
+    height: 3px;
+    transform: translateX(-50%);
+    background-color: var(---primary-color);
+}
+
+@media print{
+    .root-nav{
+        display: none;
+    }
+}

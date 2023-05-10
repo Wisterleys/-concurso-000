@@ -3,14 +3,16 @@
 }
 .root{
     width: 100%;
-    height: 100vh;
+    height: 130vh;
     background-color: var(---color-primary);
 }
 .setTitle{
     font-size: 18pt;
     font-weight: bolder;
-    color: rgb(185, 4, 185);
+    color: var(---primary-color);
+    overflow: hidden;
 }
 .link {
     cursor: pointer;
 }
+

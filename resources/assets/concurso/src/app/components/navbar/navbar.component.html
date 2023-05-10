@@ -1,0 +1,32 @@
+<div class="root-nav">
+    <img *ngIf="hasImageHeader" src="assets/img/banner.webp" alt="Logo" class="img-fluid" style="width: 100%; height: 100%;">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" routerLink="/">
+                <img src="assets/img/logo-fepese.png" alt="Logo" width="70" class="img-fluid">
+              </a>
+              <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" [class.show]="isMenuOpen" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item" (click)="selected($event)">
+                    <a class="nav-link" routerLink="/">Home</a>
+                    <div></div>
+                  </li>
+                  <li class="nav-item"  (click)="selected($event)">
+                    <a class="nav-link" routerLink="/edital">Edital</a>
+                    <div></div>
+                  </li>
+                  
+                  <li class="nav-item no-header-bg" (click)="selected($event)">
+                    <a class="nav-link" routerLink="/concurso">Inscrição</a>
+                    <div></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+</div>

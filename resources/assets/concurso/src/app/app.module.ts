@@ -7,13 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { FormComponent } from './components/form/form.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { EditalComponent } from './pages/edital/edital.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     FormComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent,
+    EditalComponent
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/concurso');
 
-Route::get('/concurso', function () {
-    return view('index');
-});
+
+Route::any('{path}', function() { //Qualquer rota que não esteja configurada aqui no Laravel será considerada rotas do Angular
+    return view('index'); 
+})->where('path', '.*');
