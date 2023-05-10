@@ -23,7 +23,7 @@ export class SnackbarComponent implements OnInit {
     
       let el = document.querySelector('.snackbar') as HTMLDivElement;
       if (el) {
-        console.log('aultura da tela',innerHeight*.10)
+        
         el.style.top = `${innerHeight*.87}px`;
       }
 
@@ -50,6 +50,13 @@ export class SnackbarComponent implements OnInit {
   }
   getColor(){
    
+  }
+  onResize(){
+    window.addEventListener("resize", function() {
+      console.log("Nova largura da tela: " + window.innerWidth);
+      console.log("Nova altura da tela: " + window.innerHeight);
+    });
+    
   }
 
 }

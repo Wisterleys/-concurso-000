@@ -26,4 +26,5 @@ export class NavbarComponent implements OnInit {
     (classes.className.search("no-header-bg")>-1)?this.hasImageHeader=false:this.hasImageHeader=true;
     
   }
+  
 }
