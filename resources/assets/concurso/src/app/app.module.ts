@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { FormComponent } from './components/form/form.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     FormComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
