@@ -23,7 +23,7 @@
                               </svg>
                         </button>
                         <button *ngIf="isBtnLoadingData&&!isPrint" type="submit" class="btn bg-btns w-100 p-1">
-                            <div class="spinner-border text-warning m-0" role="status"></div>
+                            <div class="spinner-border bg-btns m-0" role="status"></div>
                         </button>
                     </div>
                     <div class="col-md-4 col-sm-12">
@@ -116,7 +116,7 @@
             <div class="col-md-4 col-sm-5">
                 <button *ngIf="!isBtnLoading&&!isPrint" type="submit" class="btn bg-btns w-100 p-2" (click)="submit()">{{submitTile}}</button>
                 <button *ngIf="isBtnLoading&&!isPrint" type="submit" class="btn bg-btns w-100 p-1">
-                    <div class="spinner-border text-warning" role="status">
+                    <div class="spinner-border bg-btns" role="status">
                   </div></button>
             </div>
             <div class="col-12 mt-5">
