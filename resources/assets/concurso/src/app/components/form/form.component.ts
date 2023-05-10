@@ -62,6 +62,8 @@ export class FormComponent implements OnInit {
             c.value = ciity;
           }, 100);
         }else{
+          let search = <HTMLInputElement>document.querySelector(".search");
+          search.value=""
           let s = <HTMLInputElement>document.querySelector("#state");
           s.value='';
           let c = <HTMLInputElement>document.querySelector("#city");

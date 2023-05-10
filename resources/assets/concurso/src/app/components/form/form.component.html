@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12 root-form">
     <div class="">
         <h2 class="mt-3 text-center setTitle">
             {{title}}
@@ -17,13 +17,13 @@
                     </div>
                     <div class="col-md-2 col-sm-12 d-flex align-items-center">
                         
-                        <button *ngIf="!isBtnLoadingData&&!isPrint" class="btn btn-success w-100 p-2" (click)="loadData()">
+                        <button *ngIf="!isBtnLoadingData&&!isPrint" class="btn bg-btns w-100 p-2" (click)="loadData()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                               </svg>
                         </button>
-                        <button *ngIf="isBtnLoadingData&&!isPrint" type="submit" class="btn btn-primary w-100 p-1">
-                            <div class="spinner-border text-warning m-0" role="status"></div>
+                        <button *ngIf="isBtnLoadingData&&!isPrint" type="submit" class="btn bg-btns w-100 p-1">
+                            <div class="spinner-border bg-btns m-0" role="status"></div>
                         </button>
                     </div>
                     <div class="col-md-4 col-sm-12">
@@ -48,7 +48,12 @@
             </div>
             <div class="form-group required mb-3 col-12">
                 <label >Cargo</label>
-                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" maxlength="250" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <select class="form-select validate" [disabled]="isBtnLoading||isFielddisabled">
+                    <option value=""></option>
+                    <option 
+                    [selected]="formData.job"
+                    value="Desenvolvedor de Software">Desenvolvedor de Software</option>
+                </select>
                 <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>
@@ -109,9 +114,9 @@
 
             </div>
             <div class="col-md-4 col-sm-5">
-                <button *ngIf="!isBtnLoading&&!isPrint" type="submit" class="btn btn-success w-100 p-2" (click)="submit()">{{submitTile}}</button>
-                <button *ngIf="isBtnLoading&&!isPrint" type="submit" class="btn btn-success w-100 p-1">
-                    <div class="spinner-border text-warning" role="status">
+                <button *ngIf="!isBtnLoading&&!isPrint" type="submit" class="btn bg-btns w-100 p-2" (click)="submit()">{{submitTile}}</button>
+                <button *ngIf="isBtnLoading&&!isPrint" type="submit" class="btn bg-btns w-100 p-1">
+                    <div class="spinner-border bg-btns" role="status">
                   </div></button>
             </div>
             <div class="col-12 mt-5">
