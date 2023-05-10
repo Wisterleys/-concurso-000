@@ -48,7 +48,12 @@
             </div>
             <div class="form-group required mb-3 col-12">
                 <label >Cargo</label>
-                <input [value]="formData.job?formData.job:''" [disabled]="isBtnLoading||isFielddisabled" maxlength="250" type="text" class="form-control validate" placeholder="Informe seu cargo...">
+                <select class="form-select validate" [disabled]="isBtnLoading||isFielddisabled">
+                    <option value=""></option>
+                    <option 
+                    [selected]="formData.job"
+                    value="Desenvolvedor de Software">Desenvolvedor de Software</option>
+                </select>
                 <small hidden  class="text-danger">Ops! Precisa informar o cargo!</small>
             </div>
         </div>
