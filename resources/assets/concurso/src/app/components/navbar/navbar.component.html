@@ -11,16 +11,16 @@
               </button>
               <div class="collapse navbar-collapse justify-content-end" [class.show]="isMenuOpen" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item" (click)="selected($event)">
+                  <li class="nav-item" data-routeName="">
                     <a class="nav-link" routerLink="/">Home</a>
                     <div></div>
                   </li>
-                  <li class="nav-item"  (click)="selected($event)">
+                  <li class="nav-item"  data-routeName="edital">
                     <a class="nav-link" routerLink="/edital">Edital</a>
                     <div></div>
                   </li>
                   
-                  <li class="nav-item" (click)="selected($event)">
+                  <li class="nav-item" data-routeName="concurso">
                     <a class="nav-link" routerLink="/concurso">Inscrição</a>
                     <div></div>
                   </li>
