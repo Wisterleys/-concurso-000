@@ -1,3 +1,36 @@
+## Configuração do ambiente para avaliação
+
+- Clonar o repositório para a máquina local
+
+- Executar o comando "composer install" para instalar os pacotes e dependências
+
+- Renomear o arquivo .env.example para .env
+
+- Editar o arquivo .env para apontar corretamente a conexão com o banco de dados
+	
+		DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=laravel
+		DB_USERNAME=root
+		DB_PASSWORD=123456
+	
+- Importar o arquivo .sql para gerar as tabelas e dados iniciais via PhpMyAdmin ou via terminal.
+
+- Acessar ./resources/assets/concurso/src/environments e configurar a url-base "baseUrl" para aplicação angular acessar a API
+
+- Após configurar environments, acessar a pasta ./resources/assets/concurso e rodar "npm install"
+
+- Em seguida execurar o script pelo comando "npm run build"
+
+- Agora, volta para a pasta raiz do projeto "./", basta subir um servidor web executando php artisan serve ou utilizando o xampp
+
+- Feito esses passos, basta acessar a url da aplicação e navegar.
+
+- Segue link da documentação da API para acompanhar as melhorias que foi preciso implementar: https://documenter.getpostman.com/view/13053877/2s93eX1YQX
+
+
+
 # Teste Desenvolvedor PHP / Laravel / Angular
 
 
