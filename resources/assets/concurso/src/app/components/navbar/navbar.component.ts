@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,23 +9,36 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   @Input() hasImageHeader:boolean=true;
   public isMenuOpen:boolean = false;
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const routeName = event.urlAfterRedirects.split('/').pop()?.replace(/\s/g,"");
+        console.log(routeName)
+        if(routeName==="concurso"){
+          this.hasImageHeader=false;
+        }else this.hasImageHeader=true;
+      
+        document.querySelectorAll('.nav-item').forEach((el) => {
+          const element = el as HTMLElement;
+          let div = element.querySelector('div');
+          if(element.dataset.routename==routeName){
+            div!.style.display = 'block';
+          }else{
+            div!.style.display = 'none';
+          }
+          
+        });
+        
+      }
+    });
   }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  selected(event:Event){
-    document.querySelectorAll('.nav-item').forEach(el=>{
-      let div = el.querySelector('div');
-      div!.style.display='none';
-    })
-    let classes = (<HTMLLIElement>event.target).parentNode as HTMLLIElement;
-    let div = (<HTMLLIElement>event.target).parentNode?.querySelector('div');
-    div!.style.display='block';
-    (classes.className.search("no-header-bg")>-1)?this.hasImageHeader=false:this.hasImageHeader=true;
-    
-  }
+ 
   
 }
