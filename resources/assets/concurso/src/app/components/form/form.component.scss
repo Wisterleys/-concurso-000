@@ -10,3 +10,28 @@ label{
     font-weight: bolder;
 }
 
+@media print {
+    /* Estilos para a página de impressão */
+    .root-form{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        page-break-after: always;
+    }
+    .print-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .print-column {
+      display: inline-block;
+      vertical-align: top;
+      width: 48%;
+      margin-right: 0%;
+    }
+  }
+  
+  
