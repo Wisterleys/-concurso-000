@@ -23,7 +23,7 @@
 
 - Em seguida execurar o script pelo comando "npm run build"
 
-- Agora, volta para a pasta raiz do projeto "./", basta subir um servidor web executando php artisan serve ou utilizando o xampp
+- Agora, volta para a pasta raiz do projeto "./", basta subir um servidor web executando "php artisan serve" ou utilizando o xampp
 
 - Feito esses passos, basta acessar a url da aplicação e navegar.
 
