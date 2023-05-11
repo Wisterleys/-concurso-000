@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    baseUrl: "http://localhost:89/api/v1"
+    baseUrl: "http://192.168.0.131/api/v1"
 };
 /*
  * For easier debugging in development mode, you can import the following file
