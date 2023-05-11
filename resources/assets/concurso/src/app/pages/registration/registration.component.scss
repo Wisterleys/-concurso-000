@@ -15,4 +15,9 @@
 .link {
     cursor: pointer;
 }
+@media print{
+    .root{
+        height: 100vh;
+    }
+}
 
